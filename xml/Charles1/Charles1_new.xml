@@ -277,9 +277,9 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
             
                   <p>The materials of the scene of signing the <title ref="#ChasI_Warrant">warrant</title>, in which I believe that I have given, from the marking of <persName ref="#Marten">Marten</persName>'s cheek to the guiding of <persName ref="#Ingoldsby">Ingoldsby</persName>'s hand, a very faithful version of what actually occurred, are chiefly taken from the Defences in the Trials of the Regicides.<note resp="#rnes #lmw">Likely refers to the collections of State Trials collected and edited throughout the eighteenth century and early nineteenth century by Francis Hargrave, William Cobbett, and others. <persName ref="#MRM">Mitford</persName> likely also had access to collections of memoirs of the regicides from Heneage Finch's works to James Caulfield's.</note> It is certain that the Judges, after the condemnation, were panic-struck at their own act; and that but for an extraordinary exertion of his singular power over the minds of all with whom he came in contact, <persName ref="#Cromwell">Cromwell</persName> would never have succeeded in obtaining the signatures of the <orgName ref="#High_Court_of_Justice">Commissioners of the High Court of Justice</orgName> to an instrument essential to the completion of <rs type="event" ref="#regicide">this great national crime</rs>, and to the purposes of his own ambition.</p>
             
-                  <p>I am not aware of having in any material point departed from the truth of History, except in shortening <rs type="event" ref="#ChasI_trial">the trial</rs>, in bringing the <persName ref="#Qu_Henrietta">Queen</persName> to <placeName ref="#England">England</placeName>, and in assigning to <persName ref="#Qu_Henrietta">Henrietta</persName> the interruption of the sentence, which was actually occasioned by <persName ref="#LadyFairfax">Lady Fairfax</persName>; deviations, which were vitally necessary to the effect of the drama. I have some doubts also whether <persName ref="#Cromwell_MRM">Cromwell</persName> did really get rid of <persName ref="#Fairfax">Fairfax</persName> by dismissing him and <persName ref="#Harrison">Harrison</persName> to "seek the Lord together."<note resp="#rnes">Not a direct quotation, but a corruption of the anecdote from Hume's History of England, Volume I, Part E.</note> 
+                  <p>I am not aware of having in any material point departed from the truth of History, except in shortening <rs type="event" ref="#ChasI_trial">the trial</rs>, in bringing the <persName ref="#Qu_Henrietta">Queen</persName> to <placeName ref="#England">England</placeName>, and in assigning to <persName ref="#Qu_Henrietta">Henrietta</persName> the interruption of the sentence, which was actually occasioned by <persName ref="#LadyFairfax">Lady Fairfax</persName>; deviations, which were vitally necessary to the effect of the drama. I have some doubts also whether <persName ref="#Cromwell_MRM">Cromwell</persName> did really get rid of <persName ref="#Fairfax">Fairfax</persName> by dismissing him and <persName ref="#Harrison">Harrison</persName> to <q>seek the Lord together.</q><note resp="#rnes">Not a direct quotation, but a corruption of the anecdote from Hume's History of England, Volume I, Part E.</note> 
                      <bibl corresp="#HistEngland_Hume">
-                        <persName ref="#hume">Hume</persName> tells the story confidently; but <persName ref="#hume">Hume</persName>, although the most delightful, is by no means the most accurate of historians</bibl>; and the manner in which we are, by the casual mention of contemporary writers, as well "as by the evidence on the different trials, enabled to account for almost every instant of <persName ref="#Cromwell_MRM">Cromwell</persName>'s time during that eventful morning, goes far in my mind to disprove the circumstance.<note resp="#rnes">Source unidentified.</note> But the incident is highly dramatic, and so strictly in keeping with the characters of all parties, that I have no scruple in assuming it as a fact. The thing might have happened, if it did not, and that is excuse enough for the dramatist, although not for the historian.</p>
+                        <persName ref="#hume">Hume</persName> tells the story confidently; but <persName ref="#hume">Hume</persName>, although the most delightful, is by no means the most accurate of historians</bibl>; and the manner in which we are, by the casual mention of contemporary writers, as well as by the evidence on the different trials, enabled to account for almost every instant of <persName ref="#Cromwell_MRM">Cromwell</persName>'s time during that eventful morning, goes far in my mind to disprove the circumstance.<note resp="#rnes">Source unidentified.</note> But the incident is highly dramatic, and so strictly in keeping with the characters of all parties, that I have no scruple in assuming it as a fact. The thing might have happened, if it did not, and that is excuse enough for the dramatist, although not for the historian.</p>
                </div>
         
                <div type="prologue">
@@ -358,7 +358,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
                </castItem>
                <castItem>
                   <role xml:id="Gloucester">
-                     <persName>Duke of Gloucester</persName>
+                     <persName ref="#Gloucester">Duke of Gloucester</persName>
                   </role>
                   <roleDesc>
                      <app>
@@ -1269,7 +1269,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
                         <rdg wit="#msC1">faith</rdg>
                      </app>
                   </l>
-                  <l xml:id="Chas_act_1_L101">In Princes.<note resp="#ebb">Cromwell refers to the time in 1647 when he and his army held Charles I in palatial captivity at Holmby House in Northamptonshire. In commenting "what friends we were" may be referring to the considerable attentions provided for the King's comfort even while under military observation.</note>
+                  <l xml:id="Chas_act_1_L101">In Princes.<note resp="#ebb">Cromwell refers to the time in 1647 when he and his army held Charles I in palatial captivity at Holmby House in Northamptonshire. In commenting <q>what friends we were</q> may be referring to the considerable attentions provided for the King's comfort even while under military observation.</note>
                   </l>
                </sp>
                <sp who="#Ireton">
@@ -2903,7 +2903,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
                <sp who="#Cromwell_MRM">
                   <speaker>Crom.</speaker>
                   <l xml:id="Chas_act_1_L499">The <rs type="person" ref="#Jesus">King of Kings</rs>
-                     <note resp="#rnes">A <title ref="#NewTestament_Bible">New Testament</title> epithet for Christ, who is called the King of Kings in Revelations 17:2 ("the Lamb shall overcome them: for he is Lord of lords, and King of kings.") See also Revelations 19:16.</note>
+                     <note resp="#rnes">A <title ref="#NewTestament_Bible">New Testament</title> epithet for Christ, who is called the King of Kings in <ref>Revelations 17:2</ref> (<quote>the Lamb shall overcome them: for he is Lord of lords, and King of kings.</quote>) See also <ref>Revelations 19:16</ref>.</note>
                   </l>
                   <l xml:id="Chas_act_1_L500">Delivers him unto us. <persName ref="#Harrison">Harrison</persName>
                   </l>
@@ -4547,7 +4547,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
                            <rdg wit="#pubC1">grandame</rdg>
                            <rdg wit="#msC1">Grandame,</rdg>
                         </app> died?<note resp="#ebb">Mitford's Cromwell is confused over where
-                              <persName ref="#MaryQoS">Mary Queen of Scots</persName> was immprisoned and executed, an historical event that of course foreshadows the events of <persName ref="#ChasI">King Charles</persName>'s imprisonment, trial, and regicide. His mention of "Hardwicke" seems to refer to <placeName ref="#Hardwick_Hall">Hardwick Hall</placeName>, built by <persName ref="#Bess_of_Hardwick">Bess of Hardwick (or Elizabeth Talbot)</persName>, but the queen was never held here. Likely <persName ref="#MRM">Mitford</persName> is referring through <persName ref="#Cromwell_MRM">Cromwell</persName> to the period when Mary Queen of Scots was held captive at <placeName ref="#Sheffield_Castle">Sheffield Castle and Manor Lodge</placeName>, guarded by <persName ref="#Talbot_Geo">George Talbot, the Sixth Earl of Shrewsbury</persName> and his wife, who was Bess of Hardwick. Bess befriended the Queen during this period of captivity.</note>
+                              <persName ref="#MaryQoS">Mary Queen of Scots</persName> was immprisoned and executed, an historical event that of course foreshadows the events of <persName ref="#ChasI">King Charles</persName>'s imprisonment, trial, and regicide. His mention of <q>Hardwicke</q> seems to refer to <placeName ref="#Hardwick_Hall">Hardwick Hall</placeName>, built by <persName ref="#Bess_of_Hardwick">Bess of Hardwick (or Elizabeth Talbot)</persName>, but the queen was never held here. Likely <persName ref="#MRM">Mitford</persName> is referring through <persName ref="#Cromwell_MRM">Cromwell</persName> to the period when Mary Queen of Scots was held captive at <placeName ref="#Sheffield_Castle">Sheffield Castle and Manor Lodge</placeName>, guarded by <persName ref="#Talbot_Geo">George Talbot, the Sixth Earl of Shrewsbury</persName> and his wife, who was Bess of Hardwick. Bess befriended the Queen during this period of captivity.</note>
                         <!--LMW: can we condense this? it's unusually long-->
                      </l>
                   </sp>
@@ -4889,7 +4889,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
                <sp who="#Ireton">
                   <speaker>Ire.</speaker>
                   <stage type="business">(to Cromwell)</stage>
-                  <l xml:id="Chas_act_1_L970">The <persName>
+                  <l xml:id="Chas_act_1_L970"><persName ref="#Fairfax_hist">The
                         <app>
                            <rdg wit="#pubC1">Lord General</rdg>
                            <rdg wit="#msC1">Lord-General</rdg>
@@ -6343,7 +6343,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
                         <l xml:id="Chas_act_1_L1379">On to my prison!</l>
                      </sp>
                      <stage type="business">
-                  (Soldiers &amp;c. cry "On to Execution!" "Justice and Execution!"
+                  (Soldiers &amp;c. cry <q>On to Execution!</q> <q>Justice and Execution!</q>
                </stage>
                      <sp who="#Cromwell_MRM">
                         <speaker>Crom.</speaker>
@@ -6623,31 +6623,31 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
                         <rdg wit="#pubC1">and</rdg>
                         <rdg wit="#msC1">&amp;</rdg>
                      </app> betwixt his teeth</l>
-                  <l xml:id="Chas_act_1_L1434">
+                  <l xml:id="Chas_act_1_L1434">Muttered 
                      <app>
-                        <rdg wit="#msC1">souls!</rdg>
-                        <rdg wit="#pubC1">souls!"</rdg>
+                        <rdg wit="#msC1">Faint craven souls!</rdg>
+                        <rdg wit="#pubC1"><q>Faint craven souls!</q></rdg>
                      </app>
                   </l>
                </sp>
                <sp who="#Cromwell_MRM">
                   <speaker>Crom.</speaker>
                   <l xml:id="Chas_act_1_L1435">Fie! <app>
-                        <rdg wit="#pubC1">F</rdg>
-                        <rdg wit="#msC1">f</rdg>
-                     </app>ie! to speak </l>
+                        <rdg wit="#pubC1">Fie!</rdg>
+                        <rdg wit="#msC1">fie!</rdg>
+                     </app> to speak </l>
                   <l xml:id="Chas_act_1_L1436">Irreverently of such great-ones. Faint </l>
-                  <l xml:id="Chas_act_1_L1437">And craven souls<app>
-                        <rdg wit="#pubC1">!</rdg>
-                        <rdg wit="#msC1">.</rdg>
+                  <l xml:id="Chas_act_1_L1437">And craven <app>
+                        <rdg wit="#pubC1">souls!</rdg>
+                        <rdg wit="#msC1">souls.</rdg>
                      </app> Follow my <app>
                         <rdg wit="#pubC1">son; thoul't</rdg>
                         <rdg wit="#msC1">son. Thou'lt</rdg>
                      </app> find him</l>
                   <l xml:id="Chas_act_1_L1438">Heading his valiant <app>
-                        <rdg wit="#pubC1">h</rdg>
-                        <rdg wit="#msC1">H</rdg>
-                     </app>orse. Bid him be still</l>
+                        <rdg wit="#pubC1">horse</rdg>
+                        <rdg wit="#msC1">Horse</rdg>
+                     </app>. Bid him be still</l>
                   <l xml:id="Chas_act_1_L1439">Till I send to him<app>
                         <rdg wit="#pubC1">—</rdg>
                         <rdg wit="#msC1">,</rdg>
@@ -6874,7 +6874,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
                         <rdg wit="#pubC1">we</rdg>
                         <rdg wit="#msC1">I</rdg>
                      </app> will listen though your pleaded reason</l>
-                  <l xml:id="Chas_act_2_L1485">Outlast <persName ref="#HughPeters">Hugh Peter</persName>'s <app>
+                  <l xml:id="Chas_act_2_L1485">Outlast <persName ref="#Peters_Hugh">Hugh Peter</persName>'s <app>
                         <rdg wit="#pubC1">s</rdg>
                         <rdg wit="#msC1">S</rdg>
                      </app>ermon.</l>
