@@ -6,7 +6,8 @@ schematypens="http://relaxng.org/ns/structure/1.0"?>
 type="application/xml" 
 schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
-	<!-- 2021-08-27 ebb: Hi Elizabeth! I've just updated the schema line on this file.
+	<!-- 2021-08-27 ebb: Hi Elizabeth! I've just updated the schema line on this file. 
+		And I turned all the straight apostrophes into curly apostrophes in the element text contents.
 		
 		Here's where to find the current project documentation: https://github.com/DigitalMitford (the Digital Mitford GitHub organization.
 		(The Documentation repo has a Readme file with lots of links, here: https://github.com/DigitalMitford/DM_documentation )
@@ -16,14 +17,18 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 		Lisa, Sam, and I worked on documentation for them here: https://github.com/DigitalMitford/DM_documentation/blob/master/SI_Occupations_Guide.md 
 		(Basically, if they're mythical/archetypal figures, don't bother tagging them for occupation.)
 		Also, the occupation elements are self-closing, and just carry values in attributes, like this:
-
-              <occupation type="artist" subtype="painter"/>
-               
-         Example with multiple white-space-separated subtypes:
-
+              <occupation type="artist" subtype="painter"/>         
+         Example with multiple white-space-separated subtypes: 
            <occupation type="literary" subtype="poet essayist critic"/>
            
-           Hope this helps! I'm updating this as the latest file on Sharepoint and GitHub. 
+        Here's the regex pattern we used for finding all the <rdg> elements with just punctuation inside:
+           <rdg wit=".+?">[.,?!::-]+</rdg> 
+           
+        Oh! I added a revisionDesc at the end of the teiHeader. That's basically to record significant stages of revision. I started it here. We should probably record 
+        at least a couple of prior stages of work from your launching the file...if you can still see the Box version history, maybe you can add some entries? 
+           
+           Hope this helps! I'm updating this as the latest file on Sharepoint and GitHub. Your work on this looks really good so far! 
+               
 	-->
 	<teiHeader>
 		<fileDesc>
@@ -71,8 +76,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 			</seriesStmt>
 
 			<notesStmt>
-				<note>This edition compares the first 1826 published edition of Mitford's play <title>Foscari</title> against the manuscript version of the play held in the British Library, and against the final published text of 1854.</note>
-				<note>The hand-writing in the manuscript verion of the play appears to be that of a copyist rather than Mary Russell Mitford. The manuscript, which was submitted to the Lord Chamberlain's Office for review, is dated 30 October 1826 and is titled <title>Foscari, a Tragedy in Five Acts</title>.</note>
+				<note>This edition compares the first 1826 published edition of Mitford’s play <title>Foscari</title> against the manuscript version of the play held in the British Library, and against the final published text of 1854.</note>
+				<note>The hand-writing in the manuscript verion of the play appears to be that of a copyist rather than Mary Russell Mitford. The manuscript, which was submitted to the Lord Chamberlain’s Office for review, is dated 30 October 1826 and is titled <title>Foscari, a Tragedy in Five Acts</title>.</note>
 			</notesStmt>
 
 			<sourceDesc>
@@ -118,7 +123,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 		<profileDesc>
 			<handNotes>
-				<handNote>The manuscript of 1826 does not appear to be written in Mitford's hand, but rather in the hand of a copyist. A second hand in pencil has renumbered the pages for inclusion in this volume of Plays from the Lord Chamberlain's Office, folio pages 341-450.</handNote>
+				<handNote>The manuscript of 1826 does not appear to be written in Mitford’s hand, but rather in the hand of a copyist. A second hand in pencil has renumbered the pages for inclusion in this volume of Plays from the Lord Chamberlain’s Office, folio pages 341-450.</handNote>
 			</handNotes>
 		</profileDesc>
 		
@@ -127,12 +132,18 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 				<p>Mitford’s spelling and punctuation are retained, except where a word is split at the end of a line and the beginning of the next in the manuscript. Where Mitford’s spelling and hyphenation of words deviates from the standard, in order to facilitate searching we are using the TEI elements “choice," “sic," and “reg" to encode both Mitford’s spelling and the regular international standard of Oxford English spelling, following the first listed spelling in the Oxford English Dictionary. The long s and ligatured forms are not encoded.</p>
 			</editorialDecl>
 		</encodingDesc>
+		<revisionDesc>
+			<!-- Describe latest changes at the top in <change/> elements.  -->
+			<change when="2021-08-27" who="#ebb">Updated schema line to new Mitford ODD-schema. Revised backlists to change @type to @sortkey and update values. 
+				Changed straight apostrophes to curly apostrophes in element contents. Added this change log to teiHeader.</change>
+			<!-- Describe earlier changes in <change/> elements below this point. -->
+		</revisionDesc>
 	</teiHeader>
 	<text>
 		<front>
 			<div type="witness">
 				<listWit>
-					<witness xml:id="msF">Manuscript submitted to the Examiner's Office in a Copyist's Hand</witness>
+					<witness xml:id="msF">Manuscript submitted to the Examiner’s Office in a Copyist’s Hand</witness>
 					<witness xml:id="F1826">Foscari: A Tragedy, London, G. B. Whittaker, 1826</witness>
 					<witness xml:id="F1854">Version in the 1854 Dramatic Works</witness>
 				</listWit>
@@ -143,10 +154,10 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 					<head>PREFACE.</head>
 					<p><app><rdg wit="#F1826">The subject of the following <title ref="#Foscari_MRMPlay">Play</title> is taken from a domestic tragedy in the
 						history of <placeName ref="#Venice">Venice</placeName>, and was suggested to the <persName ref="#MRM">Authoress</persName> by an interesting
-						narrative of that event in <title ref="#Moore_ViewItaly">Dr. Moore's Travels</title>. It is scarcely, perhaps,
+						narrative of that event in <title ref="#Moore_ViewItaly">Dr. Moore’s Travels</title>. It is scarcely, perhaps,
 						necessary to say here in prose, what the Prologue repeats in verse, that her
 						piece was not only completed, but actually presented to <placeName ref="#Covent_Garden_Theatre">Covent Garden Theatre</placeName> 
-						before the publication of <bibl><author ref="#Byron">Lord Byron's</author><title ref="#Two_Foscari">well-known drama</title></bibl>: a fact
+						before the publication of <bibl><author ref="#Byron">Lord Byron’s</author><title ref="#Two_Foscari">well-known drama</title></bibl>: a fact
 						which happily exculpates her from any charge of a vain imitation of the
 						great <persName ref="#Byron">Poet</persName>, or of a still vainer rivalry.</rdg></app></p>
 
@@ -169,9 +180,9 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 				<div type="preface">
 					<!-- err: The preface to the 1854 edition doesn't have a title. Not sure if this is the right way to indicate this. -->
 					<p><app><rdg wit="#F1854">The subject of the following <title ref="#Foscari_MRMPlay">Play</title> is taken from a domestic tragedy in the history of 	
-						<placeName ref="#Venice">Venice</placeName>, and was suggested to the <persName ref="#MRM">Authoress</persName> by an interesting narrative of that 						event in <title ref="#Moore_ViewItaly">Dr. Moore's Travels</title>. It is scarcely, perhaps, necessary to say here in prose, what the Prologue repeats 
+						<placeName ref="#Venice">Venice</placeName>, and was suggested to the <persName ref="#MRM">Authoress</persName> by an interesting narrative of that 						event in <title ref="#Moore_ViewItaly">Dr. Moore’s Travels</title>. It is scarcely, perhaps, necessary to say here in prose, what the Prologue repeats 
 						in verse, that her piece was not only completed, but actually accepted at <placeName ref="#Covent_Garden_Theatre">Covent Garden Theatre</placeName>, 
-						before the publication of <bibl><author ref="#Byron">Lord Byron's</author><title ref="#Two_Foscari">well-known drama</title></bibl>.
+						before the publication of <bibl><author ref="#Byron">Lord Byron’s</author><title ref="#Two_Foscari">well-known drama</title></bibl>.
 					</rdg></app></p>
 				</div>
 			
@@ -184,7 +195,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 					<head>Epilogue to <title ref="#Foscari_MRMplay">"Foscari"</title></head>
 					<l>Just now I thought I knew it every word--</l>
 					<l>The prettiest Epilogue you ever heard;</l>
-					<l>But in the crisis of the Prompter's call,</l>
+					<l>But in the crisis of the Prompter’s call,</l>
 					<l>A true "good natured friend" has marred it all--</l>
 					<l>He said "The play was fair"--"you might forgive--</l>
 					<l>"But in this age no tragedy could live;</l>
@@ -192,32 +203,32 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 					<l>"An age of Paper, Levity, and Prose:"</l>
 					<l>I stormed; and having lost my proper cue,</l>
 					<l>Beg to refer the argument to you,</l>
-					<l>Assur'd you'll find, in spite of canting sages,</l>
+					<l>Assur’d you’ll find, in spite of canting sages,</l>
 					<l>Our own the most poetical of ages!--</l>
-					<l>What though our sadden'd walls no more unfolds</l>
-					<l>The Lottery's rich promises of gold,</l>
-					<l>Though Fortune's darling wheels for ever still</l>
+					<l>What though our sadden’d walls no more unfolds</l>
+					<l>The Lottery’s rich promises of gold,</l>
+					<l>Though Fortune’s darling wheels for ever still</l>
 					<l>And patriot hands have torn her final bill,</l>
 					<l>She yet averts, by many a kindly quirk</l>
 					<l>The sad alternative to starve or work;</l>
 					<l>While commerce holds alliance with Romance</l>
 					<l>And Fancy lends her brightest hues to chance;</l>
-					<l>Bids airy visions hover o'er <placeName ref="#Strand">the Strand</placeName></l>
+					<l>Bids airy visions hover o’er <placeName ref="#Strand">the Strand</placeName></l>
 					<l>And makes the <placeName ref="#Stock_Exchange">Stock Exchange</placeName> enchanted land--</l>
-					<l>There, the rapt merchant dreams of <persName ref="#Sinbad">Sinbad's</persName> vale</l>
+					<l>There, the rapt merchant dreams of <persName ref="#Sinbad">Sinbad’s</persName> vale</l>
 					<l>And catalogues in thought, its genii for sale--</l>
 					<!-- err: I don't know if we care, but there is a page break here, and the rest of the epilogue appears on what is likely the verso of page 342, although the verso page is not numbered. -->
-					<l>There, dives to <placeName ref="#Vigo">Vigo's</placeName> time-unaltered caves</l>
+					<l>There, dives to <placeName ref="#Vigo">Vigo’s</placeName> time-unaltered caves</l>
 					<l>And borrows millions from the courteous waves--</l>
-					<l>There, nobly scorning <placeName ref="#England">England's</placeName> prose per cents,</l>
+					<l>There, nobly scorning <placeName ref="#England">England’s</placeName> prose per cents,</l>
 					<l>Takes, at his whim, a share in governments</l>
-					<l>Now makes some new republic's cause his own,</l>
+					<l>Now makes some new republic’s cause his own,</l>
 					<l>Now bleeds in pocket for an ancient throne,</l>
 					<l>Feels his purse lighten as <placeName>Poyais</placeName> desponds,</l>
 					<l>And cheapens Freedom in Columbian Bonds--</l>
 					<l>Delighted sees, released from despot sway</l>
 					<l>A mighty people rise--in act to <emph rend="underline">pray</emph>.</l>
-					<l>Nay, touch'd by human nature's holiest plea,</l>
+					<l>Nay, touch’d by human nature’s holiest plea,</l>
 					<l>Finds in <placeName ref="#Exchange_Alley">Change Alley</placeName> true <placeName>Thermopolie</placeName>,</l>
 					<l>And by deep interest urged and classic pity,</l>
 					<l>Gives to poor <placeName ref="#Greece">Greece</placeName> a loan and--a committee--</l>
@@ -226,7 +237,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 					<l>Here where its influence blest from times of yore,</l>
 					<l>May it to-night relieve one trembler more,</l>
 					<l>Bid generous critics mildly judge her flaws,</l>
-					<l>And move the Fair to own a sister's cause!</l>
+					<l>And move the Fair to own a sister’s cause!</l>
 				</div>
 				<!-- err: The verse prologue appears in the MS, the 1826 published edition, and the 1854 edition, although in the MS version, it does not indicate that it was spoken by Mr. Serle. In addition, in the MS version, the words "to 'Foscari'" appear right after "Prologue.", but not in either of the other two versions. Did I indicate the variations amongst the title of Prologue correctly using rdg wit below? -->
 				<div type="prologue">
@@ -240,34 +251,34 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 					<l>For riches famed of yore, and once as <app><rdg wit="#msF">free,</rdg><rdg wit="#F1826 #F1854">free</rdg></app></l>
 					<l>As her own element, the bounding sea,</l>
-					<l>Fair <placeName ref="#Venice">Venice</placeName> now, <app><rdg wit="#msF">fallen</rdg><rdg wit="#F1826 #F1854">fall'n</rdg></app> from her <app><rdg wit="#msF #F1826">"palmy state,"</rdg><rdg wit="#F1854">palmy state,</rdg></app></l>
-					<l>Broods o'er <app><rdg wit="#msF"><add place="above">her</add></rdg><rdg wit="#F1826 #F1854">her</rdg></app> palace-city desolate;</l>
+					<l>Fair <placeName ref="#Venice">Venice</placeName> now, <app><rdg wit="#msF">fallen</rdg><rdg wit="#F1826 #F1854">fall’n</rdg></app> from her <app><rdg wit="#msF #F1826">"palmy state,"</rdg><rdg wit="#F1854">palmy state,</rdg></app></l>
+					<l>Broods o’er <app><rdg wit="#msF"><add place="above">her</add></rdg><rdg wit="#F1826 #F1854">her</rdg></app> palace-city desolate;</l>
 					<l>Each mart deserted, each Palladian <app><rdg wit="#msF">Hall</rdg><rdg wit="#F1826 #F1854">hall</rdg></app></l>
 					<l>Vacant and <app><rdg wit="#msF">ruinous,</rdg><rdg wit="#F1826 #F1854">ruinous</rdg></app> proclaims her fall.</l>
 					<l>Yet still one triumph of her ancient fame</l>
 					<l>Gilds her decay, and lingers round her name<app><rdg wit="#msF">:</rdg><rdg wit="#F1826 #F1854">;</rdg></app></l>
-					<l><app><rdg wit="#msF">Tis</rdg><rdg wit="#F1826 #F1854">'Tis</rdg></app> that beneath the proud Venetian dome</l>
-					<l>The <persName type="arch" ref="#Tragic_Muse">Tragic Muse</persName> hath <app><rdg wit="#msF #F1854">fixed</rdg><rdg wit="#F1826">fix'd</rdg></app> her favourite home;</l>
-					<l>'Tis that her very name <app><rdg wit="#msF #F1854">bids</rdg><rdg wit="#F1826">makes</rdg></app> young hearts glow</l>
+					<l><app><rdg wit="#msF">Tis</rdg><rdg wit="#F1826 #F1854">’Tis</rdg></app> that beneath the proud Venetian dome</l>
+					<l>The <persName type="arch" ref="#Tragic_Muse">Tragic Muse</persName> hath <app><rdg wit="#msF #F1854">fixed</rdg><rdg wit="#F1826">fix’d</rdg></app> her favourite home;</l>
+					<l>’Tis that her very name <app><rdg wit="#msF #F1854">bids</rdg><rdg wit="#F1826">makes</rdg></app> young hearts glow</l>
 					<l>With deep remembrance of some glorious woe.</l>
 					<l>There <persName ref="#Shylock_O">Shylock</persName> whetted his relentless knife;</l>
 					<l>There poor <persName ref="#Othello_O">Othello</persName> won <rs type="person" ref="#Desdemona_O">his murdered wife</rs>;</l>
 					<l>There <persName ref="#Pierre_V">Pierre</persName>, stout traitor, the awed State defied;</l>
-					<l>There <persName ref="#Jaffier_V">Jaffier</persName> <app><rdg wit="#msF">loved</rdg><rdg wit="#F1826 #F1854">lov'd</rdg></app>, and <persName ref="#Belvidera_V">Belvidera</persName> <app><rdg wit="#msF">died,</rdg><rdg wit="#F1826 #F1854">died.</rdg></app></l>
+					<l>There <persName ref="#Jaffier_V">Jaffier</persName> <app><rdg wit="#msF">loved</rdg><rdg wit="#F1826 #F1854">lov’d</rdg></app>, and <persName ref="#Belvidera_V">Belvidera</persName> <app><rdg wit="#msF">died,</rdg><rdg wit="#F1826 #F1854">died.</rdg></app></l>
 					<l>And there <rs type="person" ref="#Byron">the immortal Bard</rs>, who all too soon</l>
-					<l>Fell in the blaze of Fame's effulgent noon,</l>
+					<l>Fell in the blaze of Fame’s effulgent noon,</l>
 					<l>Lamented <persName ref="#Byron">Byron</persName>!<note resp="#err">In the Foscari manuscript, Byron is underlined in a different color (possibly with a pencil and thus was not likely underlined by the scribe.</note> twice a tale hath told</l>
 					<l>Of princely anguish in the days of old:</l><note resp="#err">The prologue as it appears in the scan of the 1826 published edition of Foscari available on NCCO breaks off after this line. The rest of the prologue as produced here notes differences between the manuscript version and the 1854 edition of the play only.</note>
-					<l>How 'gainst the <orgName ref="#Senate_Venetian_F">Senate</orgName> <app><rdg wit="#msF"><persName ref="#Marino_Faliero">Falieri</persName> fired,</rdg><rdg wit="#F1854"><persName ref="#Marino_Faliero"></persName>Faliero fired</rdg></app></l>
+					<l>How ’gainst the <orgName ref="#Senate_Venetian_F">Senate</orgName> <app><rdg wit="#msF"><persName ref="#Marino_Faliero">Falieri</persName> fired,</rdg><rdg wit="#F1854"><persName ref="#Marino_Faliero"></persName>Faliero fired</rdg></app></l>
 					<l>With vengeful hate by their stern doom expired;</l>
 					<l>And <app><rdg wit="#msF"><emph rend="underline">his</emph></rdg><rdg wit="#F1854"><emph rend="italics">his</emph></rdg></app> severer fate, condemned to try</l>
 					<l><rs type="person" ref="#Foscari_Fr">His guiltless son</rs>, the good <persName ref="#Doge_F">Doge Foscari</persName>.</l>
 					<l>That tale of woe, but with <app><rdg wit="#msF">a lower</rdg><rdg wit="#F1854">an humbler</rdg></app> flight<app><rdg wit="#F1854">.</rdg></app></l>
 					<l>And weaker wing, our <rs type="person" ref="#MRM">Authoress</rs> of to-night</l>
 					<l>Hath brought before ye. Deem not of it worse</l>
-					<l>That 'tis a theme made <app><rdg wit="#msF">famous</rdg><rdg wit="#F1854">sacred</rdg></app> by <rs type="person" ref="#Byron">his</rs> verse.</l>
+					<l>That ’tis a theme made <app><rdg wit="#msF">famous</rdg><rdg wit="#F1854">sacred</rdg></app> by <rs type="person" ref="#Byron">his</rs> verse.</l>
 					<l>Ere <rs type="title" ref="#The_Two_Foscari">his bold Tragedy</rs> burst into day,</l>
-					<l>Her trembling hand had closed <rs type="title" ref="#Foscari_MRMplay">this woman's play</rs>.</l>
+					<l>Her trembling hand had closed <rs type="title" ref="#Foscari_MRMplay">this woman’s play</rs>.</l>
 					<l>A different track she <app><rdg wit="#msF">followed</rdg><rdg wit="#F1854">follows</rdg></app>---Oh<app><rdg wit="#F1854">!</rdg></app> forgive</l>
 					<l>Her errors<app><rdg wit="#msF">,</rdg></app> ye, who bid <rs type="title" ref="#Foscari_MRMplay">the Drama</rs> live!</l>
 					<l>To your indulgence she commends her cause,</l>
@@ -305,7 +316,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 						<castItem type="role">
 							<role xml:id="Cosmo"><persName ref="#Cosmo">Cosmo</persName></role>
-							<roleDesc><persName ref="#Donato">Donato</persName>'s Son</roleDesc>
+							<roleDesc><persName ref="#Donato">Donato</persName>’s Son</roleDesc>
 							<actor><persName ref="#Serle_TJ">Mr. Serle</persName></actor></castItem>
 
 						<castItem type="role">
@@ -315,27 +326,27 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 						<castItem type="role">
 							<role xml:id="Senators_Foscari"><persName ref="#Senators_Foscari">Senators</persName></role>
-							<note resp="#err">The group of nameless senators referred to in the cast list of Mitfor'd Foscari, as well as in the body of the play.</note>
+							<note resp="#err">The group of nameless senators referred to in the cast list of Mitfor’d Foscari, as well as in the body of the play.</note>
 						</castItem>
 						
 						<castItem type="role">
 							<role xml:id="Jailers_Foscari"><persName ref="#Jailers_Foscari">Jailers</persName></role>
-							<note resp="#err">The group of nameless jailers referred to in the cast list of Mitfor'd Foscari, as well as in the body of the play.</note>
+							<note resp="#err">The group of nameless jailers referred to in the cast list of Mitfor’d Foscari, as well as in the body of the play.</note>
 						</castItem>
 						
 						<castItem type="role">
 							<role xml:id="Officers_Foscari"><persName ref="#Officers_Foscari">Officers</persName></role>
-							<note resp="#err">The group of nameless officers referred to in the cast list of Mitfor'd Foscari, as well as in the body of the play.</note>
+							<note resp="#err">The group of nameless officers referred to in the cast list of Mitfor’d Foscari, as well as in the body of the play.</note>
 						</castItem>
 						
 						<castItem type="role">
 							<role xml:id="Gentlemen_Foscari"><persName ref="#Gentlemen_Foscari">Gentlemen</persName></role>
-							<note resp="#err">The group of nameless gentlemen referred to in the cast list of Mitfor'd Foscari, as well as in the body of the play.</note>
+							<note resp="#err">The group of nameless gentlemen referred to in the cast list of Mitfor’d Foscari, as well as in the body of the play.</note>
 						</castItem>
 						
 						<castItem type="role">
 							<role xml:id="Camilla"><persName ref="#Camilla">Camilla</persName></role>
-							<roleDesc><persName ref="#Donato">Donato</persName>'s Daughter</roleDesc>
+							<roleDesc><persName ref="#Donato">Donato</persName>’s Daughter</roleDesc>
 							<actor><persName ref="#Sloman_Mrs">Mrs. Sloman</persName></actor></castItem>
 
 						<castItem type="role">
@@ -363,7 +374,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 					<div type="scene" n="1">
 						<head><app><rdg wit="#msF">Scene</rdg><rdg wit="#F1826 #F1854">SCENE I.</rdg></app></head>
-						<stage type="setting"><placeName ref="#St_Marks_Place">St. Mark's Place</placeName>.</stage>
+						<stage type="setting"><placeName ref="#St_Marks_Place">St. Mark’s Place</placeName>.</stage>
 						<stage type="business"><persName ref="#Erizzo">Count Erizzo</persName> <app><rdg wit="#msF"> &amp; </rdg><rdg wit="#F1826 #F1854"> and </rdg></app> <persName ref="#Celso_F">Celso</persName> meeting <persName ref="#Donato">Donato</persName>.</stage>
 						<sp who="#Donato">
 							<speaker>Don.</speaker>
@@ -383,7 +394,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp who="#Celso_F">
 							<speaker>Cel.</speaker>
 							<l>I am a suitor to <rs type="person" ref="#Doge_F">his Highness</rs>, Sir, </l>
-							<l>With <persName ref="#Erizzo">Count Erizzo</persName>'s aid.</l>
+							<l>With <persName ref="#Erizzo">Count Erizzo</persName>’s aid.</l>
 						</sp>
 						<sp who="#Donato">
 							<speaker>Don.</speaker>
@@ -391,7 +402,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp who="#Erizzo">
 							<speaker>Eriz.</speaker>
-							<l>One of the <app><rdg wit="#msF">Procurators</rdg><rdg wit="#F1826 #F1854">procurators</rdg></app><note resp="#err">The Procurator of St. Mark's was the second-most prestigious lifetime office in the Republic of Venice (the most prestigious was that of the Doge).</note> died last night;</l>
+							<l>One of the <app><rdg wit="#msF">Procurators</rdg><rdg wit="#F1826 #F1854">procurators</rdg></app><note resp="#err">The Procurator of St. Mark’s was the second-most prestigious lifetime office in the Republic of Venice (the most prestigious was that of the Doge).</note> died last night;</l>
 							<l>And honest <persName ref="#Celso_F">Celso</persName>here would fain succeed</l>
 							<l>To that good office.</l>
 						</sp>
@@ -421,14 +432,14 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Eriz.</speaker>
 							<l>And those friends</l>
 							<l>May soon be brothers. Will not thy <persName ref="#Camilla">Camilla</persName></l>
-							<l>Be <persName ref="#Foscari_Fr">Foscari</persName>'s <app><rdg wit="#msF">bride</rdg><rdg wit="#F1826 #F1854">bride,</rdg></app> when his rough <app><rdg wit="#msF">Mistress</rdg><rdg wit="#F1826 #F1854">mistress</rdg></app> War</l>
+							<l>Be <persName ref="#Foscari_Fr">Foscari</persName>’s <app><rdg wit="#msF">bride</rdg><rdg wit="#F1826 #F1854">bride,</rdg></app> when his rough <app><rdg wit="#msF">Mistress</rdg><rdg wit="#F1826 #F1854">mistress</rdg></app> War</l>
 							<l>Shall loose him from her arms?</l>
 						</sp>
 						<sp who="#Donato">
 							<speaker>Don.</speaker>
-							<l><app><rdg wit="#msF #F1826">Aye</rdg><rdg wit="#F1854">Ay</rdg></app>; he'll return</l>
-							<l>Too soon<app><rdg wit="#msF">;</rdg><rdg wit="#F1826 #F1854">,</rdg></app>, whene'er he comes, to steal away</l>
-							<l>My age's darling. Yet is he a <app><rdg wit="#F1826 #F1854">boy</rdg><rdg wit="#msF"><del rend="strikethrough"><handShift resp="#pencil_msF"/>boy</del><add><handShift resp="#pencil_msF"/>youth</add></rdg></app></l>
+							<l><app><rdg wit="#msF #F1826">Aye</rdg><rdg wit="#F1854">Ay</rdg></app>; he’ll return</l>
+							<l>Too soon<app><rdg wit="#msF">;</rdg><rdg wit="#F1826 #F1854">,</rdg></app>, whene’er he comes, to steal away</l>
+							<l>My age’s darling. Yet is he a <app><rdg wit="#F1826 #F1854">boy</rdg><rdg wit="#msF"><del rend="strikethrough"><handShift resp="#pencil_msF"/>boy</del><add><handShift resp="#pencil_msF"/>youth</add></rdg></app></l>
 							<l>Full of high thoughts, a <app><rdg wit="#msF #F1854">noble,</rdg><rdg wit="#F1826">noble</rdg></app> princely <app><rdg wit="#msF"><del rend="overwritten">boy;</del><add><handShift resp="#pencil_msF"/>youth</add></rdg><rdg wit="#F1826 #F1854">boy,</rdg></app></l>
 							<l>Kindly <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> generous; one that may deserve</l>
 							<l>Even her.---Well, give me this <app><rdg wit="#msF">petition</rdg><rdg wit="#F1826 #F1854">petition,</rdg></app> <persName ref="#Erizzo">Count</persName>.</l>
@@ -438,7 +449,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp who="#Celso_F">
 							<speaker>Cel.</speaker>
 							<l>How can <app><rdg wit="#F1826 #F1854">I</rdg><rdg wit="#msF">I <del rend="strikethrough"><unclear><supplied resp="#err">repay</supplied></unclear></del></rdg></app></l>
-							<l>Repay---He's gone. Think'st thou he will <app><rdg wit="#msF">succeed</rdg><rdg wit="#F1826 #F1854">succeed?</rdg></app></l><!-- err: It doesn't appear that there is any punctuation after "succeed" in the manuscript version of the play, but it's possible that the edge of the paper might not appear in the photo. This should be checked against the original. -->
+							<l>Repay---He’s gone. Think’st thou he will <app><rdg wit="#msF">succeed</rdg><rdg wit="#F1826 #F1854">succeed?</rdg></app></l><!-- err: It doesn't appear that there is any punctuation after "succeed" in the manuscript version of the play, but it's possible that the edge of the paper might not appear in the photo. This should be checked against the original. -->
 						</sp>
 						<sp who="#Erizzo">
 							<speaker>Eriz.</speaker>
@@ -449,26 +460,26 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp who="#Celso_F">
 							<speaker>Cel.</speaker>
-							<l>Say'st thou so?</l>
+							<l>Say’st thou so?</l>
 						</sp>
 						<sp who="#Erizzo">
 							<speaker>Eriz.</speaker>
 							<l>I know him.</l>
-							<l>He's of a temper <app><rdg wit="#msF">kind &amp; quick &amp; warm,</rdg><rdg wit="#F1826 #F1854">kind, and quick, and warm;</rdg></app></l>
-							<l>A powerful partizan, but easily <app><rdg wit="#msF">swayed</rdg><rdg wit="#F1826 #F1854">sway'd</rdg></app></l>
+							<l>He’s of a temper <app><rdg wit="#msF">kind &amp; quick &amp; warm,</rdg><rdg wit="#F1826 #F1854">kind, and quick, and warm;</rdg></app></l>
+							<l>A powerful partizan, but easily <app><rdg wit="#msF">swayed</rdg><rdg wit="#F1826 #F1854">sway’d</rdg></app></l>
 							<l>By flattery or anger. Of such tools</l>
-							<l>Are Faction's ranks composed, not <app><rdg wit="#msF">officered</rdg><rdg wit="#F1826 #F1854">officered.</rdg></app></l>
-							<l><persName ref="#Celso_F">Celso</persName>, we'll have this <persName ref="#Doge_F">Doge</persName> <app><rdg wit="#msF">unbonnetted</rdg><rdg wit="#F1826 #F1854">unbonneted</rdg></app>,</l>
+							<l>Are Faction’s ranks composed, not <app><rdg wit="#msF">officered</rdg><rdg wit="#F1826 #F1854">officered.</rdg></app></l>
+							<l><persName ref="#Celso_F">Celso</persName>, we’ll have this <persName ref="#Doge_F">Doge</persName> <app><rdg wit="#msF">unbonnetted</rdg><rdg wit="#F1826 #F1854">unbonneted</rdg></app>,</l>
 							<l>This <app><rdg wit="#msF"><persName ref="#Doge_F">Doge</persName>,</rdg><rdg wit="#F1826 #F1854">Doge</rdg></app> who wears his load of <app><rdg wit="#msF">fourscore</rdg><rdg wit="#F1826 #F1854">four-score</rdg></app> years</l>
 							<l>Easier than I my forty. He contemns</l>
 							<l>Me and my brother nobles<app><rdg wit="#msF #F1854">;</rdg><rdg wit="#F1826">:</rdg></app> he may learn</l>
 							<l>To know and fear our power. I tell <app><rdg wit="#msF #F1826">you</rdg><rdg wit="#F1854">thee</rdg></app>, Sir,</l>
 							<l>These brows of mine do ache for that same <app><rdg wit="#msF">bonnett</rdg><rdg wit="#F1826 #F1854">bonnet,</rdg></app></l><!-- err: As with some of the other places in the photos of the manuscript version of Foscari, it is possible that the image cuts off the end of this line, which would obscure the comma if there is one. It would be good to confirm that there is indeed no comma after "bonnett." -->
-							<l>And <app><rdg wit="#msF">e'er</rdg><rdg wit="#F1826 #F1854">ere</rdg></app> this day be ended---</l>
+							<l>And <app><rdg wit="#msF">e’er</rdg><rdg wit="#F1826 #F1854">ere</rdg></app> this day be ended---</l>
 						</sp>
 						<sp who="#Celso_F">
 							<speaker>Cel.</speaker>
-							<l><app><rdg wit="#msF">'Tis</rdg><rdg wit="#F1826 #F1854">'Tis,</rdg></app> my <app><rdg wit="#msF">lord</rdg><rdg wit="#F1826 #F1854">Lord</rdg></app>,</l>
+							<l><app><rdg wit="#msF">’Tis</rdg><rdg wit="#F1826 #F1854">’Tis,</rdg></app> my <app><rdg wit="#msF">lord</rdg><rdg wit="#F1826 #F1854">Lord</rdg></app>,</l>
 							<l>A golden moment. The young <persName ref="#Foscari_Fr">Foscari</persName></l>
 							<l>Is safe with <persName ref="#Sforza">Sforza</persName> in the <rs type="event">Milan wars</rs>.</l>
 						</sp>
@@ -481,7 +492,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>A <app><rdg wit="#msF">Signal Victory</rdg><rdg wit="#F1826 #F1854">signal victory</rdg></app>; <placeName ref="#Brescia">Brescia</placeName> is freed;</l>
 							<l>And <persName ref="#Sforza">Sforza</persName> gives the <app><rdg wit="#msF #F1854">unshared, unmingled</rdg><rdg wit="#F1826">unshared unmingled</rdg></app> praise</l>
 							<l>To <persName ref="#Foscari_Fr">Foscari</persName>. We must <app><rdg wit="#msF">dethrone</rdg><rdg wit="#F1826 #F1854">unthrone</rdg></app> the <persName ref="#Doge_F">Doge</persName></l>
-							<l><app><rdg wit="#msF">Er'e</rdg><rdg wit="#F1826 #F1854">Ere</rdg></app> this news reach the <app><rdg wit="#msF">City</rdg><rdg wit="#F1826 #F1854">city</rdg></app>city; for the people</l>
+							<l><app><rdg wit="#msF">Er’e</rdg><rdg wit="#F1826 #F1854">Ere</rdg></app> this news reach the <app><rdg wit="#msF">City</rdg><rdg wit="#F1826 #F1854">city</rdg></app>city; for the people</l>
 							<l>Adore <persName ref="#Doge_F #Foscari_Fr">the Foscari</persName>. Faugh! I am weary</l>
 							<l><app><rdg wit="#msF">of</rdg><rdg wit="#F1826 #F1854">Of</rdg></app> this good <persName ref="#Doge_F">Doge</persName>, this venerable <persName ref="#Doge_F">Doge</persName>,</l>
 							<l>This popular <persName ref="#Doge_F">Doge</persName>, this <persName ref="#Doge_F">Doge</persName> who courts <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> <app><rdg wit="#msF #F1826"><choice><sic>wooes</sic><reg>woos</reg></choice></rdg><rdg wit="#F1854">woos</rdg></app></l>
@@ -579,7 +590,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Don.</speaker>
 							<l>I was a fool</l>
 							<l>To ask<app><rdg wit="#msF">;</rdg><rdg wit="#F1826 #F1854">;---</rdg></app>a double fool to pin my faith</l>
-							<l>Upon this <persName ref="#Doge_F">Doge</persName>'s ermine.</l>
+							<l>Upon this <persName ref="#Doge_F">Doge</persName>’s ermine.</l>
 						</sp>
 						<sp who="#Celso_F">
 							<speaker>Celso.</speaker>
@@ -589,7 +600,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp who="#Donato">
 							<speaker>Don.</speaker>
 							<l>Forget <app><rdg wit="#msF">it</rdg><rdg wit="#F1826 #F1854">it,</rdg></app> Sir<app><rdg wit="#msF">.</rdg><rdg wit="#F1826 #F1854">.---</rdg></app>How go these <rs type="event">Milan<app><rdg wit="#msF">Wars</rdg><rdg wit="#F1826 #F1854">wars</rdg></app></rs><app><rdg wit="#msF">?</rdg><rdg wit="#F1826 #F1854">?---</rdg></app></l>
-							<l>I say, <persName ref="#Erizzo">Erizzo</persName>, <app><rdg wit="#msF">would'st</rdg><rdg wit="#F1826 #F1854">could'st</rdg></app> thou have believed</l>
+							<l>I say, <persName ref="#Erizzo">Erizzo</persName>, <app><rdg wit="#msF">would’st</rdg><rdg wit="#F1826 #F1854">could’st</rdg></app> thou have believed</l>
 							<l>The proudest <app><rdg wit="#msF">He</rdg><rdg wit="#F1826 #F1854">he</rdg></app> in <placeName ref="#Venice">Venice</placeName> would have dared</l>
 							<l>To treat me with such scorn?</l>
 						</sp>
@@ -617,7 +628,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>No. It but confirms</l>
 							<l>What I have heard <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> scarce believed. The <persName ref="#Doge_F">Doge</persName></l>
 							<l>Is grown so old that he forgets his friends.</l>
-							<l>Men say---it can't be true---<app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> yet men say---</l>
+							<l>Men say---it can’t be true---<app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> yet men say---</l>
 						</sp>
 						<sp who="#Donato">
 							<speaker>Don.</speaker>
@@ -625,7 +636,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp who="#Erizzo">
 							<speaker>Eriz.</speaker>
-							<l>That the <persName ref="#Doge_F">Doge</persName> repents his son's betrothment</l>
+							<l>That the <persName ref="#Doge_F">Doge</persName> repents his son’s betrothment</l>
 							<l>To thy <persName ref="#Camilla">Camilla</persName>.</l>
 						</sp>
 						<sp who="#Donato">
@@ -634,7 +645,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Sir, if this <persName ref="#Doge_F">Doge</persName> were <app><rdg wit="#msF">King</rdg><rdg wit="#F1826 #F1854">king</rdg></app> of all the earth</l>
 							<l>He might have found a <app><rdg wit="#msF">higher</rdg><rdg wit="#F1826 #F1854">higher,</rdg></app> prouder title</l>
 							<l>In father to <persName ref="#Camilla">Camilla</persName>! They are free.</l>
-							<l><persName ref="#Camilla">Camilla</persName>'s claims shall never interrupt---</l>
+							<l><persName ref="#Camilla">Camilla</persName>’s claims shall never interrupt---</l>
 							<l>What is his project?</l>
 						</sp>
 						<sp who="#Erizzo">
@@ -650,7 +661,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>To match with my <app><rdg wit="#msF"><persName ref="#Camilla">Camilla</persName>,</rdg><rdg wit="#F1826 #F1854"><persName ref="#Camilla">Camilla</persName></rdg></app> than that Gondola</l>
 							<l>With the <app><rdg wit="#msF #F1826">Bucentaur!</rdg><rdg wit="#F1854">Bucentaur?</rdg></app><note resp="#err">The Bucentaur was a large, stately barge used by the Doge of Venice when performing the annual Marriage of the Sea ceremony. A gondola, by contrast, is a small flat-bottomed Venetian boat.</note>---I will <app><rdg wit="#msF #F1826">back</rdg><rdg wit="#F1854">back,</rdg></app> <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> tell him</l>
 							<l>That <persName ref="#Foscari_Fr">Foscari</persName><!-- err 2017-08-29: I'm assuming that Donato means that the young Foscari has been freed from his engagement to Camilla, but I need to look back at the play to make sure that this is correct. --> is free. Mine own <persName ref="#Camilla">Camilla</persName>!</l>
-							<l>My <app><rdg wit="#msF">prattling</rdg><rdg wit="#F1826 #F1854">prattling,</rdg></app> pretty one! I'll back and tell him.</l>
+							<l>My <app><rdg wit="#msF">prattling</rdg><rdg wit="#F1826 #F1854">prattling,</rdg></app> pretty one! I’ll back and tell him.</l>
 						</sp>
 						<sp who="#Erizzo">
 							<speaker>Eriz.</speaker>
@@ -685,12 +696,12 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Dearest <app><rdg wit="#msF"><persName ref="#Zeno_F">Zeno</persName></rdg><rdg wit="#F1826 #F1854"><persName ref="#Zeno_F">Zeno</persName>,</rdg></app></l>
 							<l>This is no common pleasure. Thou the latest</l>
 							<l>Of our late revellers, whom the sun scarce sees</l>
-							<l><app><rdg wit="#msF">'Till</rdg><rdg wit="#F1826 #F1854">Till</rdg></app> half his course be run---</l>
+							<l><app><rdg wit="#msF">’Till</rdg><rdg wit="#F1826 #F1854">Till</rdg></app> half his course be run---</l>
 						</sp>
 						<sp who="#Zeno_F">
 							<speaker>Zeno.</speaker>
 							<l>Oh! good my <app><rdg wit="#msF">lord</rdg><rdg wit="#F1826 #F1854">Lord,</rdg></app></l>
-							<l>I meet him often <app><rdg wit="#msF">er'e</rdg><rdg wit="#F1826 #F1854">ere</rdg></app> I go to <app><rdg wit="#msF">bed</rdg><rdg wit="#F1826 #F1854">bed,</rdg></app></l>
+							<l>I meet him often <app><rdg wit="#msF">er’e</rdg><rdg wit="#F1826 #F1854">ere</rdg></app> I go to <app><rdg wit="#msF">bed</rdg><rdg wit="#F1826 #F1854">bed,</rdg></app></l>
 							<l>The bright reproachful tell-tale!</l>
 						</sp>
 						<sp who="#Doge_F">
@@ -707,7 +718,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp who="#Doge_F">
 							<speaker>Doge.</speaker>
 							<l>No petition for the post</l>
-							<l>Vacant by poor <persName ref="#Venoni_F">Venoni</persName>'s death?</l>
+							<l>Vacant by poor <persName ref="#Venoni_F">Venoni</persName>’s death?</l>
 						</sp>
 						<sp who="#Zeno_F">
 							<speaker>Zeno.</speaker>
@@ -741,7 +752,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp who="#Doge_F">
 							<speaker>Doge.</speaker>
 							<l>He flung from me</l>
-							<l><app><rdg wit="#msF">Er'e</rdg><rdg wit="#F1826 #F1854">Ere</rdg></app> I could tell him that the post was given</l>
+							<l><app><rdg wit="#msF">Er’e</rdg><rdg wit="#F1826 #F1854">Ere</rdg></app> I could tell him that the post was given</l>
 							<l>To <persName ref="#Loredano_F">Signor Loredano</persName>, a ripe scholar</l>
 							<l>Pining in penury, at the pressing instance</l>
 							<l>Of his own son.</l>
@@ -786,9 +797,9 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp who="#Zeno_F">
 							<speaker>Zeno.</speaker>
-							<l>Last night at <placeName ref="#St_Marks_Place">St. Mark</placeName>'s</l>
+							<l>Last night at <placeName ref="#St_Marks_Place">St. Mark</placeName>’s</l>
 							<l>There was a rumour floating--none could trace</l>
-							<l><app><rdg wit="#msF">It's</rdg><rdg wit="#F1826 #F1854">Its</rdg></app> source---of a great victory obtained</l>
+							<l><app><rdg wit="#msF">It’s</rdg><rdg wit="#F1826 #F1854">Its</rdg></app> source---of a great victory obtained</l>
 							<l>By <persName ref="#Foscari_Fr">Foscari</persName> and <persName ref="#Sforza">Sforza</persName>.</l>
 						</sp>
 						<sp who="#Doge_F">
@@ -796,7 +807,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Heaven grant it!</l><!-- err 2017-10-18: I coded "Heaven" as a fictional place name for an xml id, but I'm not sure that's appropriate in all cases, or even if we should code this at all. Is Heaven a place? A way to refer to a deity? The heavens (as opposed to "Heaven")? Help! -->
 							<l>Sure we shall hear <app><rdg wit="#msF #F1826">to day</rdg><rdg wit="#F1854">to-day</rdg></app><app><rdg wit="#msF">.</rdg><rdg wit="#F1826 #F1854">.--</rdg></app><app><rdg wit="#msF #F1826">Now</rdg><rdg wit="#F1854">Now,</rdg></app> dearest Count, </l>
 							<l>What is your will? You led the old man on</l>
-							<l>To talk of his dear children, <app><rdg wit="#msF">'till</rdg><rdg wit="#F1826 #F1854">till</rdg></app> in sooth</l>
+							<l>To talk of his dear children, <app><rdg wit="#msF">’till</rdg><rdg wit="#F1826 #F1854">till</rdg></app> in sooth</l>
 							<l>He had forgotten the whole world. Now say</l>
 							<l>What is that scroll?</l>
 						</sp>
@@ -827,7 +838,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp who="#Doge_F">
 							<speaker>Doge.</speaker>
-							<l>I have some cause. What! <app><rdg wit="#msF">Did'st</rdg><rdg wit="#F1826 #F1854">didst</rdg></app> thou never hear</l>
+							<l>I have some cause. What! <app><rdg wit="#msF">Did’st</rdg><rdg wit="#F1826 #F1854">didst</rdg></app> thou never hear</l>
 							<l>Of the old prediction that was verified</l>
 							<l>When I became the Doge?</l>
 						</sp>
@@ -848,7 +859,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Soared buoyantly, till the diminished <app><rdg wit="#msF">speck</rdg><rdg wit="#F1826 #F1854">toy</rdg></app></l>
 							<l>Grew smaller than the falcon when she stoops</l>
 							<l>To dart upon her prey. I sent for <app><rdg wit="#msF">cord</rdg><rdg wit="#F1826 #F1854">cord,</rdg></app></l>
-							<l>Servant on <app><rdg wit="#msF">Servant</rdg><rdg wit="#F1826 #F1854">servant</rdg></app> <app><rdg wit="#msF">toppling</rdg><rdg wit="#F1826 #F1854">hurrying</rdg></app>, <app><rdg wit="#msF">'till</rdg><rdg wit="#F1826 #F1854">till</rdg></app> the kite</l>
+							<l>Servant on <app><rdg wit="#msF">Servant</rdg><rdg wit="#F1826 #F1854">servant</rdg></app> <app><rdg wit="#msF">toppling</rdg><rdg wit="#F1826 #F1854">hurrying</rdg></app>, <app><rdg wit="#msF">’till</rdg><rdg wit="#F1826 #F1854">till</rdg></app> the kite</l>
 							<l>Shrank to the size of a beetle<app><rdg wit="#msF">;</rdg><rdg wit="#F1826 #F1854">:</rdg></app> still I called</l>
 							<l>For cord, <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app>and sent to summon father, mother,</l>
 							<l>My little sisters, my old halting nurse<app><rdg wit="#msF">--</rdg><rdg wit="#F1826 #F1854">,--</rdg></app></l>
@@ -862,7 +873,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l><app><rdg wit="#msF #F1826">Aye</rdg><rdg wit="#F1854">Ay</rdg></app>, <app><rdg wit="#msF">Mount! Mount! Mount!</rdg><rdg wit="#F1826 #F1854">mount! mount! mount!</rdg></app>--I started <app><rdg wit="#msF">back &amp;</rdg><rdg wit="#F1826 #F1854">back, and</rdg></app> saw</l>
 							<l>A tall and aged woman, one of the wild</l>
 							<l>Peculiar <app><rdg wit="#msF">people,</rdg><rdg wit="#F1826 #F1854">people</rdg></app> whom wild <placeName ref="#Hungary">Hungary</placeName> sends</l>
-							<l>Roving <app><rdg wit="#msF">thro'</rdg><rdg wit="#F1826 #F1854">through</rdg></app> every land. She drew her cloak</l>
+							<l>Roving <app><rdg wit="#msF">thro’</rdg><rdg wit="#F1826 #F1854">through</rdg></app> every land. She drew her cloak</l>
 							<l>About her, turned her black eyes up to <app><rdg wit="#msF"><placeName ref="#Heaven">Heaven</placeName></rdg><rdg wit="#F1826 #F1854"><placeName ref="#Heaven">Heaven</placeName>,</rdg></app></l>
 							<l>And thus pursued<app><rdg wit="#msF">;</rdg><rdg wit="#F1826 #F1854">:--</rdg></app><app><rdg wit="#msF">Aye;</rdg><rdg wit="#F1826">Aye,</rdg><rdg wit="#F1854">Ay,</rdg></app> like his <app><rdg wit="#msF">fortunes</rdg><rdg wit="#F1826 #F1854">fortunes,</rdg></app> <app><rdg wit="#msF">mount</rdg><rdg wit="#F1826 #F1854">mount,</rdg></app></l>
 							<l>The future Doge of <placeName ref="#Venice">Venice</placeName>! And before</l>
@@ -893,7 +904,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Doge.</speaker>
 							<l>Long time in me</l>
 							<l>The seeds of faith lay dormant; till at last</l>
-							<l>As youth's gay wildness sobered, <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> ambition</l>
+							<l>As youth’s gay wildness sobered, <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> ambition</l>
 							<l>Grew stronger in my soul, the prophecy</l>
 							<l>Knocked at my thoughts, <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> I by fits believed</l>
 							<l>That which I wished were true. Now for thy <app><rdg wit="#msF">scroll</rdg><rdg wit="#F1826 #F1854">scroll;--</rdg></app></l>
@@ -926,7 +937,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Grant the first boon! <app><rdg wit="#msF">Why</rdg><rdg wit="#F1826 #F1854">Why,</rdg></app> my good <persName ref="#Celso_F">Signor Celso</persName>,</l>
 							<l>This is too palpable. Grant the first boon!</l>
 							<l>Make thee the Procurator! Fy! Fy! Fy!</l>
-							<l><persName ref="#Erizzo">Erizzo</persName>'s talent hath forsaken him;</l>
+							<l><persName ref="#Erizzo">Erizzo</persName>’s talent hath forsaken him;</l>
 							<l>This cheat is shallow. They have heard the tale</l>
 							<l>I told thee, <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> this paltry poor device--</l>
 							<l>Off to the <app><rdg wit="#msF"><del rend="strikethrough">winds</del><add place="above">waves</add></rdg><rdg wit="#F1826 #F1854">waves</rdg></app> and winds!</l>
@@ -942,14 +953,14 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Doge.</speaker>
 							<l>But never will be used</l>
 							<l>Against <app><rdg wit="#msF">me</rdg><rdg wit="#F1826 #F1854">me,</rdg></app> <persName ref="#Zeno_F">Zeno</persName>. I should hate myself</l>
-							<l>Could I suspect <persName ref="#Donato">Donato</persName>. <app><rdg wit="#msF"><persName ref="#Zeno_F">Count</persName></rdg><rdg wit="#F1826 #F1854"><persName ref="#Zeno_F">Count,</persName></rdg></app>we'll go</l>
+							<l>Could I suspect <persName ref="#Donato">Donato</persName>. <app><rdg wit="#msF"><persName ref="#Zeno_F">Count</persName></rdg><rdg wit="#F1826 #F1854"><persName ref="#Zeno_F">Count,</persName></rdg></app>we’ll go</l>
 							<l>Together to the <orgName ref="#Senate_Venetian_F">Senate</orgName>. Thou shalt see </l>
 							<l>The quick relenting of his sudden wrath,</l>
 							<l>His graceful <app><rdg wit="#msF">self rebuke</rdg><rdg wit="#F1826 #F1854">self-rebuke</rdg></app>, his honest love.</l>
 						</sp>
 						<sp who="#Zeno_F">
 							<speaker>Zeno.</speaker>
-							<l><app><rdg wit="#msF">'Ill</rdg><rdg wit="#F1826 #F1854">I'll</rdg></app> gladly be converted.</l>
+							<l><app><rdg wit="#msF">’Ill</rdg><rdg wit="#F1826 #F1854">I’ll</rdg></app> gladly be converted.</l>
 						</sp>
 						<sp who="#Doge_F">
 							<speaker>Doge.</speaker>
@@ -971,7 +982,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp who="#Camilla">
 							<speaker>Cam.</speaker>
-							<l><app><rdg wit="#msF #F1826">Sure</rdg><rdg wit="#F1854">Sure,</rdg></app> he'll not cheat us of his early smiles,</l>
+							<l><app><rdg wit="#msF #F1826">Sure</rdg><rdg wit="#F1854">Sure,</rdg></app> he’ll not cheat us of his early smiles,</l>
 							<l>His gay <app><rdg wit="#msF">goodmorrow</rdg><rdg wit="#F1826 #F1854">good-morrow</rdg></app>, that best joy of home</l>
 							<l>When dear friends meet in morning cheerfulness.</l>
 						</sp>
@@ -983,11 +994,11 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp who="#Camilla">
 							<speaker>Cam.</speaker>
 							<l>None! Hast thou never seen</l>
-							<l>The heaven of <app><rdg wit="#msF">kindness,</rdg><rdg wit="#F1826 #F1854">kindness</rdg></app> that in <persName ref="#Foscari_Fr">Foscari</persName>'s eyes</l>
-							<l>Shines under those dark brows? And I'm the <app><rdg wit="#msF">Sister</rdg><rdg wit="#F1826 #F1854">sister</rdg></app></l>
+							<l>The heaven of <app><rdg wit="#msF">kindness,</rdg><rdg wit="#F1826 #F1854">kindness</rdg></app> that in <persName ref="#Foscari_Fr">Foscari</persName>’s eyes</l>
+							<l>Shines under those dark brows? And I’m the <app><rdg wit="#msF">Sister</rdg><rdg wit="#F1826 #F1854">sister</rdg></app></l>
 							<l>Of that dear <persName ref="#Cosmo">Cosmo</persName>, the selected bride</l>
 							<l>Of that still dearer <persName ref="#Foscari_Fr">Foscari</persName>! <app><rdg wit="#msF">Oh cousin</rdg><rdg wit="#F1826">Oh, cousin</rdg><rdg wit="#F1854">Oh, cousin,</rdg></app></l>
-							<l>I am the blessedest creature that e'er trod</l>
+							<l>I am the blessedest creature that e’er trod</l>
 							<l>This laughing earth! There is but only one</l>
 							<l>Can hope to be so happy;--<app><rdg wit="#msF">Thou perchance</rdg><rdg wit="#F1826">thou, perchance</rdg><rdg wit="#F1854">thou, perchance,</rdg></app></l>
 							<l>When <persName ref="#Cosmo">Cosmo</persName>--</l>
@@ -1002,18 +1013,18 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp who="#Camilla">
 							<speaker>Cam.</speaker>
-							<l>Feed not man's <app><rdg wit="#msF">vanity</rdg><rdg wit="#F1826 #F1854">vanity;</rdg></app></l>
+							<l>Feed not man’s <app><rdg wit="#msF">vanity</rdg><rdg wit="#F1826 #F1854">vanity;</rdg></app></l>
 							<l>Let not thy blushes <app><rdg wit="#msF">answer</rdg><rdg wit="#F1826 #F1854">answer.</rdg></app></l>
 						</sp>
 						<sp who="#Cosmo">
 							<speaker>Cos.</speaker>
 							<l>Sister <app><rdg wit="#msF">mine</rdg><rdg wit="#F1826 #F1854">mine,</rdg></app></l>
-							<l>'Tis thou art clothed in blushes. Why the <app><rdg wit="#msF">Dawn</rdg><rdg wit="#F1826 #F1854">dawn</rdg></app></l>
+							<l>’Tis thou art clothed in blushes. Why the <app><rdg wit="#msF">Dawn</rdg><rdg wit="#F1826 #F1854">dawn</rdg></app></l>
 							<l>Opening her ardent eyes, <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> shaking wide</l>
 							<l>Her golden locks on the <placeName ref="#Adriatic_Sea">Adriatic</placeName> wave,</l>
 							<l>The bright <persName ref="#Aurora">Aurora</persName>, she is sad <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> pale</l>
 							<l>And spiritless compared to thee. Hast thou</l>
-							<l>Been <persName ref="#Psyche">Psyche</persName>'s errand?<note resp="#err">An allusion to the four tasks imposed upon the mythological Psyche by her lover Cupid's mother, Venus, in Lucius Apuleius' Metamorphoses.</note> <app><rdg wit="#msF">or</rdg><rdg wit="#F1826 #F1854">Or</rdg></app> hath some <app><rdg wit="#msF">sweet</rdg><rdg wit="#F1826 #F1854">fair</rdg></app> vision</l>
+							<l>Been <persName ref="#Psyche">Psyche</persName>’s errand?<note resp="#err">An allusion to the four tasks imposed upon the mythological Psyche by her lover Cupid’s mother, Venus, in Lucius Apuleius’ Metamorphoses.</note> <app><rdg wit="#msF">or</rdg><rdg wit="#F1826 #F1854">Or</rdg></app> hath some <app><rdg wit="#msF">sweet</rdg><rdg wit="#F1826 #F1854">fair</rdg></app> vision</l>
 							<l>Lapt thee in loveliness?</l>
 						</sp>
 						<sp who="#Camilla">
@@ -1021,7 +1032,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>I think I dreamt</l>
 							<l>Of <app><rdg wit="#msF">Heaven</rdg><rdg wit="#F1826 #F1854">heaven</rdg></app>; for I was in a place where <app><rdg wit="#msF">Care</rdg><rdg wit="#F1826 #F1854">care</rdg></app></l>
 							<l>And <app><rdg wit="#msF">Fear &amp; Sorrow</rdg><rdg wit="#F1826 #F1854">fear and sorrow</rdg></app> <app><rdg wit="#msF #F1826">came</rdg><rdg wit="#F1854">live</rdg></app> not, <app><rdg wit="#msF">self sustained</rdg><rdg wit="#F1826 #F1854">self-sustained</rdg></app></l>
-							<l>On <app><rdg wit="#msF">wings,</rdg><rdg wit="#F1826 #F1854">wings</rdg></app> such as the <app><rdg wit="#msF">limners</rdg><rdg wit="#F1826 #F1854">limner's</rdg></app> cunning lends <note resp="#err">A limner is a painter of portraits.</note></l>
+							<l>On <app><rdg wit="#msF">wings,</rdg><rdg wit="#F1826 #F1854">wings</rdg></app> such as the <app><rdg wit="#msF">limners</rdg><rdg wit="#F1826 #F1854">limner’s</rdg></app> cunning lends <note resp="#err">A limner is a painter of portraits.</note></l>
 							<l>To the <app><rdg wit="#msF"><orgName ref="#Seraphim">Seraphim &amp;</orgName></rdg><rdg wit="#F1826 #F1854"><orgName ref="#Seraphim">Seraphim, and</orgName></rdg></app> <app><rdg wit="#msF">singing,</rdg><rdg wit="#F1826 #F1854">singing</rdg></app> like a bird</l>
 							<l>From the deep gladness of a merry heart</l>
 							<l>The whole night long. And when the morning came</l>
@@ -1065,7 +1076,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp who="#Cosmo">
 							<speaker>Cos.</speaker>
-							<l>Gladly. I have a good man's gratitude</l>
+							<l>Gladly. I have a good man’s gratitude</l>
 							<l>To pay to the good <persName ref="#Doge_F">Doge</persName>. I must away</l>
 							<l>Or I shall miss the <orgName ref="#Senate_Venetian_F">Senate</orgName>.</l>
 						</sp>
@@ -1154,7 +1165,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Even so. He is of the <orgName ref="#Senate_Venetian_F">Senate</orgName>, is the head</l>
 							<l>Of an old powerful house, is rich, is <app><rdg wit="#msF">noble</rdg><rdg wit="#F1826 #F1854">noble,</rdg></app></l>
 							<l>Is nobly loved<app><rdg wit="#msF">:</rdg><rdg wit="#F1826 #F1854">.</rdg></app> Are not these <app><rdg wit="#msF">wrongs</rdg><rdg wit="#F1826 #F1854">crimes</rdg></app> enough</l>
-							<l>To stir our <persName ref="#Doge_F">Doge</persName>'s wrath?</l>
+							<l>To stir our <persName ref="#Doge_F">Doge</persName>’s wrath?</l>
 						</sp>
 						<sp who="#Donato">
 							<speaker>Don.</speaker>
@@ -1172,7 +1183,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Let us resume our power. Is there no brow</l>
 							<l>In <placeName ref="#Venice">Venice</placeName> that may bear this <app><rdg wit="#msF">Ducal</rdg><rdg wit="#F1826 #F1854">ducal</rdg></app> crown</l>
 							<l><app><rdg wit="#msF">But</rdg><rdg wit="#F1826 #F1854">Save</rdg></app> one? Will it not sit as gracefully</l>
-							<l>On vigorous manhood's clustering curls? On <app><rdg wit="#msF">thine</rdg><rdg wit="#F1826 #F1854">thine,</rdg></app></l>
+							<l>On vigorous manhood’s clustering curls? On <app><rdg wit="#msF">thine</rdg><rdg wit="#F1826 #F1854">thine,</rdg></app></l>
 							<l><persName ref="#Donato">Donato</persName>? <app><rdg wit="#msF">Or <persName ref="#Senators_Foscari">Pisani</persName></rdg><rdg wit="#F1826">Or, <persName ref="#Senators_Foscari">Pisani</persName>,</rdg><rdg wit="#F1854">Or <persName ref="#Senators_Foscari">Pisani</persName>,</rdg></app> upon thine?</l>
 							<l>Or any man of us? <app><rdg wit="#msF"><persName ref="#Senators_Foscari">Lords</persName></rdg><rdg wit="#F1826 #F1854"><persName ref="#Senators_Foscari">Lords</persName>,</rdg></app> have ye changed</l>
 							<l>Your purpose? That the <persName ref="#Doge_F">Doge</persName> may be deposed</l>
@@ -1189,7 +1200,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp who="#Senators_Foscari">
 							<speaker>2nd Sen.</speaker>
-							<l><app><rdg wit="#msF">'Ill</rdg><rdg wit="#F1826 #F1854">I'll</rdg></app> join <app><rdg wit="#msF">the</rdg><rdg wit="#F1826 #F1854">thee,</rdg></app> <persName ref="#Erizzo">Count</persName>.</l>
+							<l><app><rdg wit="#msF">’Ill</rdg><rdg wit="#F1826 #F1854">I’ll</rdg></app> join <app><rdg wit="#msF">the</rdg><rdg wit="#F1826 #F1854">thee,</rdg></app> <persName ref="#Erizzo">Count</persName>.</l>
 						</sp>
 						<sp who="#Senators_Foscari">
 							<speaker>3rd Sen.</speaker>
@@ -1223,8 +1234,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Nay shun me not--<app><rdg wit="#msF #F1826">That</rdg><rdg wit="#F1854">that</rdg></app> post was promised to--</l>
 							<l>Thou wilt not hear<app><rdg wit="#msF">--</rdg><rdg wit="#F1826 #F1854">!</rdg></app> I have too often borne</l>
 							<l>With thy infirmity. Forget not, <app><rdg wit="#msF #F1854"><persName ref="#Donato">Sir</persName></rdg><rdg wit="#F1826"><persName ref="#Donato">sir</persName></rdg></app>,</l>
-							<l>That <app><rdg wit="#msF">thou'st</rdg><rdg wit="#F1826 #F1854">thou'rt</rdg></app> my friend, or I must needs remember</l>
-							<l>That I'm thy <app><rdg wit="#msF">Prince</rdg><rdg wit="#F1826 #F1854">prince</rdg></app>. Now to our <app><rdg wit="#msF">business <persName ref="#Senators_Foscari">lords</persName>!</rdg><rdg wit="#F1826 #F1854">business, <persName ref="#Senators_Foscari">lords</persName>.</rdg></app></l>
+							<l>That <app><rdg wit="#msF">thou’st</rdg><rdg wit="#F1826 #F1854">thou’rt</rdg></app> my friend, or I must needs remember</l>
+							<l>That I’m thy <app><rdg wit="#msF">Prince</rdg><rdg wit="#F1826 #F1854">prince</rdg></app>. Now to our <app><rdg wit="#msF">business <persName ref="#Senators_Foscari">lords</persName>!</rdg><rdg wit="#F1826 #F1854">business, <persName ref="#Senators_Foscari">lords</persName>.</rdg></app></l>
 						</sp>
 						<sp who="#Erizzo">
 							<speaker>Eriz.</speaker>
@@ -1244,14 +1255,14 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp who="#Doge_F">
 							<speaker>Doge.</speaker>
-							<l>Think'st <app><rdg wit="#msF">thou <persName ref="#Erizzo">Count</persName></rdg><rdg wit="#F1826">thou, <persName ref="#Erizzo">count</persName>,</rdg><rdg wit="#F1854">thou, <persName ref="#Erizzo">Count</persName>,</rdg></app></l>
+							<l>Think’st <app><rdg wit="#msF">thou <persName ref="#Erizzo">Count</persName></rdg><rdg wit="#F1826">thou, <persName ref="#Erizzo">count</persName>,</rdg><rdg wit="#F1854">thou, <persName ref="#Erizzo">Count</persName>,</rdg></app></l>
 							<l>That my old heart is quiet in this pause?</l>
 							<l>Thou hast no boy in yonder <app><rdg wit="#msF #F1826">battle field</rdg><rdg wit="#F1854">battle-field</rdg></app>,</l>
-							<l>Or thou would'st know how thirstily the <app><rdg wit="#msF">Soul</rdg><rdg wit="#F1826 #F1854">soul</rdg></app></l>
+							<l>Or thou would’st know how thirstily the <app><rdg wit="#msF">Soul</rdg><rdg wit="#F1826 #F1854">soul</rdg></app></l>
 							<l>Of a father pants in his suspense for truth,</l>
 							<l>One single drop of sweet or bitter truth.</l>
 							<stage type=" business">Enter <persName ref="#Cosmo">Cosmo</persName>.</stage>
-							<l>Who's that?</l>
+							<l>Who’s that?</l>
 						</sp>
 						<sp who="#Senators_Foscari">
 							<speaker>Sen.</speaker>
@@ -1318,12 +1329,12 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Fitter for us a man</l>
 							<l>Who shall remember in this <app><rdg wit="#msF">State</rdg><rdg wit="#F1826 #F1854">state</rdg></app> of <placeName ref="#Venice">Venice</placeName></l>
 							<l>There is another <app><rdg wit="#msF">power,</rdg><rdg wit="#F1826 #F1854">power</rdg></app> great as <app><rdg wit="#msF">himself</rdg><rdg wit="#F1826 #F1854">himself,</rdg></app></l>
-							<l>And greater than the people. <app><rdg wit="#msF #F1826">Howsoe'er</rdg><rdg wit="#F1854">Howsoe'er,</rdg></app></l>
+							<l>And greater than the people. <app><rdg wit="#msF #F1826">Howsoe’er</rdg><rdg wit="#F1854">Howsoe’er,</rdg></app></l>
 							<l>Thou hast the bearing, <persName ref="#Doge_F">Doge</persName>, of a born <app><rdg wit="#msF">Prince</rdg><rdg wit="#F1826">prince,--</rdg><rdg wit="#F1854">prince,</rdg></app></l>
 							<l>To <app><rdg wit="#msF #F1826">us</rdg><rdg wit="#F1854">us,</rdg></app> thy subjects, thou art but the head</l>
 							<l>Of the Venetian <app><rdg wit="#msF">Nobles</rdg><rdg wit="#F1826 #F1854">nobles</rdg></app>.<!-- 2018-03-18 err: Should Venetian nobles be tagged with a persName tag? If so, should they be identified with the Venetian Senators or the Venetian Gentelmen in the cast list? --> Thy proud rank</l>
 							<l>Was given by them, thy equals. Each great name</l>
-							<l>That now surrounds thee hath in turn <app><rdg wit="#msF">adorn'd</rdg><rdg wit="#F1826 #F1854">adorned</rdg></app></l>
+							<l>That now surrounds thee hath in turn <app><rdg wit="#msF">adorn’d</rdg><rdg wit="#F1826 #F1854">adorned</rdg></app></l>
 							<l>Thy splendid <app><rdg wit="#msF">Office; not</rdg><rdg wit="#F1826 #F1854">office. Not</rdg></app> a noble house</l>
 							<l>But is a link in the <app><rdg wit="#msF"><sic>resplendant</sic></rdg><rdg wit="#F1826 #F1854"><reg resp="#err">resplendent</reg></rdg></app> chain</l>
 							<l>Of old Venetian <app><rdg wit="#msF">Story</rdg><rdg wit="#F1826 #F1854">story</rdg></app>. We are born</l>
@@ -1334,7 +1345,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Of the old glorious <app><rdg wit="#msF">Past</rdg><rdg wit="#F1826 #F1854">past</rdg></app>. Their country knows</l>
 							<l>And loves the lofty <app><rdg wit="#msF">echo,</rdg><rdg wit="#F1826 #F1854">echo</rdg></app> which gives <app><rdg wit="#msF">back.</rdg><rdg wit="#F1826 #F1854">back</rdg></app></l>
 							<l>The memory of the buried <app><rdg wit="#msF">Great</rdg><rdg wit="#F1826 #F1854">great</rdg></app>; <app><rdg wit="#msF">&amp; we,</rdg><rdg wit="#F1826 #F1854">and we</rdg></app></l>
-							<l>Their <app><rdg wit="#msF">son's</rdg><rdg wit="#F1826 #F1854">sons</rdg></app>--<app><rdg wit="#msF #F1826">Oh</rdg><rdg wit="#F1854">Oh,</rdg></app> our own names are watchwords to us</l>
+							<l>Their <app><rdg wit="#msF">son’s</rdg><rdg wit="#F1826 #F1854">sons</rdg></app>--<app><rdg wit="#msF #F1826">Oh</rdg><rdg wit="#F1854">Oh,</rdg></app> our own names are watchwords to us</l>
 							<l>That call to valour <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> to victory,</l>
 							<l>To <app><rdg wit="#msF">virtue</rdg><rdg wit="#F1826 #F1854">goodness</rdg></app> <app><rdg wit="#msF">&amp;</rdg><rdg wit="#F1826 #F1854">and</rdg></app> to freedom. This hast thou</l>
 							<l>Forgotten. Every creeping <app><rdg wit="#msF #F1854"><sic>artizan</sic></rdg><rdg wit="#F1826"><reg resp="#err">artisan</reg></rdg></app>,</l>
@@ -1349,7 +1360,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp who="#Zeno_F">
 							<speaker>Zeno.</speaker>
 							<l>Perhaps <persName ref="#Erizzo">Erizzo</persName></l>
-							<l>Would deign to wear this <app><rdg wit="#msF">care emcompassed Crown</rdg><rdg wit="#F1826">care-encompassed crown</rdg><rdg wit="#F1854">care-encompass'd crown</rdg></app>?</l>
+							<l>Would deign to wear this <app><rdg wit="#msF">care emcompassed Crown</rdg><rdg wit="#F1826">care-encompassed crown</rdg><rdg wit="#F1854">care-encompass’d crown</rdg></app>?</l>
 							<l>Fy! <app><rdg wit="#msF #F1826">Fy</rdg><rdg wit="#F1854">fy</rdg></app>!</l>
 						</sp>
 						<sp who="#Erizzo">
@@ -1419,7 +1430,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Of needful discipline, but quenching fear</l>
 							<l>In an indulgent kindness; these ye call</l>
 							<l>My crimes. They are my boasts. Yes, I do love</l>
-							<l>The honest <app><rdg wit="#msF">Artizans. There's</rdg><rdg wit="#F1826 #F1854">artizans; there's</rdg></app> not a face</l>
+							<l>The honest <app><rdg wit="#msF">Artizans. There’s</rdg><rdg wit="#F1826 #F1854">artizans; there’s</rdg></app> not a face</l>
 							<l>That smiles up at <app><rdg wit="#msF">me,</rdg><rdg wit="#F1826 #F1854">me</rdg></app> with a kindly eye</l>
 							<l>But sends a warmth into my heart, a glow</l>
 							<l>Of buoyant youthfulness. Age doth not freeze</l>
@@ -1537,7 +1548,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Ingrates! I bring ye victory and peace. </l>
 							<l>Victorious peace! Brescia is free, and Milan </l>
 							<l>Sues at your feet for peace. Her haughty Duke </l>
-							<l>Is Sforza's prisoner,---my prisoner, Doge, </l>
+							<l>Is Sforza’s prisoner,---my prisoner, Doge, </l>
 							<l>And Sforza weds his heir.</l>
 						</sp>
 						<sp>
@@ -1596,7 +1607,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Within its golden circlet such high thoughts, </l>
 							<l>Such a brave love of freedom, such a warm </l>
 							<l>And generous faith in man. Proud lords of Venice, </l>
-							<l>Ye ne'er deserved him. My good sword, lie there! </l>
+							<l>Ye ne’er deserved him. My good sword, lie there! </l>
 							<l>I am no more your general. Pass we forth </l>
 							<l>Together, my dear Father, private men--- </l>
 							<l>Rich in the only wealth the world can give, </l>
@@ -1610,13 +1621,13 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Zeno.</speaker>
 							<l>Ye must not leave us, lords. Doge, if again </l>
 							<l>We had to chuse, our choice again would fall </l>
-							<l>On Foscari. Is't not so?</l>
+							<l>On Foscari. Is’t not so?</l>
 						</sp>
 						<sp>
 							<speaker>Eriz.</speaker>
 							<stage>(apart to a Sen.)</stage>
 							<l>Sail with the stream--- </l>
-							<l>Foscari!---I'll find a time---</l>
+							<l>Foscari!---I’ll find a time---</l>
 						</sp>
 						<sp>
 							<speaker>Senators.</speaker>
@@ -1629,7 +1640,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Cos.</speaker>
 							<l>Now, my Father, now! </l>
-							<l>For thy fame's sake.</l>
+							<l>For thy fame’s sake.</l>
 						</sp>
 						<sp>
 							<speaker>Don.</speaker>
@@ -1668,7 +1679,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>First to proclaim the peace; then, with meek hearts, </l>
 							<l> Lowlily, with a steadfast thankfulness </l>
 							<l>Pour out our homage to the Lord of Peace </l>
-							<l>In his own temple. This high duty o'er, </l>
+							<l>In his own temple. This high duty o’er, </l>
 							<l>I bid ye to the palace; we must grace </l>
 							<l>Our soldier with some revelry. Donato, </l>
 							<l>Thou wilt be there, and Cosmo---will ye not? </l>
@@ -1702,13 +1713,13 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Cos.</speaker>
 							<l>Father, canst thou turn away </l>
 							<l>When Foscari speaks those words which mortal ear </l>
-							<l>Ne'er heard him utter?</l>
+							<l>Ne’er heard him utter?</l>
 							<pb n="28"/>
 						</sp>
 						<sp>
 							<speaker>Fos.</speaker>
 							<l>If I did mistake, </l>
-							<l>'Twas in my Father's cause; 'twas such a wrong </l>
+							<l>’Twas in my Father’s cause; ’twas such a wrong </l>
 							<l>As Cosmo would have done for thee. Forgive me, </l>
 							<l>For her dear sake.</l>
 						</sp>
@@ -1720,7 +1731,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Don.</speaker>
 							<l> Erizzo, </l>
-							<l>Think'st thou I can forget! Not even for her. </l>
+							<l>Think’st thou I can forget! Not even for her. </l>
 							<l>Stay me not, Cosmo.</l>
 							<stage type=" business">Exit Donato.</stage>
 						</sp>
@@ -1741,8 +1752,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Is sweetened by her breath, and her young voice </l>
 							<l>Floats on the breeze like music. I am here--- </l>
 							<l>Divided from her but by envious walls, </l>
-							<l>Clouds that conceal my sun. Had'st thou but seen </l>
-							<l>How I urged on my mettled courser's speed, </l>
+							<l>Clouds that conceal my sun. Had’st thou but seen </l>
+							<l>How I urged on my mettled courser’s speed, </l>
 							<l>My matchless Barbary horse, till his pure jet </l>
 							<l>Was pounced with snowy flakes; or how I strove </l>
 							<l>To graft my hot impatience on the dull </l>
@@ -1751,7 +1762,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Cos.</speaker>
-							<l>I can believe 't---</l>
+							<l>I can believe ’t---</l>
 						</sp>
 						<sp>
 							<speaker>Fos.</speaker>
@@ -1766,7 +1777,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Thou thyself</l>
 							<pb n="29"/>
 							<l>Shalt tell her these sweet things, mixed with a world </l>
-							<l>Of lovers' eloquence, of looks and sighs, </l>
+							<l>Of lovers’ eloquence, of looks and sighs, </l>
 							<l>And broken words. Aye, Foscari, thou thyself!</l>
 						</sp>
 						<sp>
@@ -1836,7 +1847,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Fos.</speaker>
-							<l>I'd rather face </l>
+							<l>I’d rather face </l>
 							<l>An enemy in battle.</l>
 						</sp>
 						<sp>
@@ -1852,7 +1863,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>But these loud shouts, this popular acclaim, </l>
 							<l>This withering, perishing blast of vulgar praise, </l>
 							<l>Whose noisy echoes do shake off the flush </l>
-							<l>Of Fame's young blossoms---Oh, I hate them all! </l>
+							<l>Of Fame’s young blossoms---Oh, I hate them all! </l>
 							<l>True honour should be silent, spotless, bright, </l>
 							<l>Enduring; trembling even at the breath </l>
 							<l>That wooes her beauty.</l>
@@ -1878,7 +1889,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>She hath but to cry Father, and to hang </l>
 							<l>About his neck and his light wrath will melt </l>
 							<l>Like snowflakes in that rain. How the dull Senate </l>
-							<l>Cowered at the haughty soldier's feet! Even I--- </l>
+							<l>Cowered at the haughty soldier’s feet! Even I--- </l>
 							<l>Thinks he I too can pardon! He shall find </l>
 							<l>My hate immortal. Nothing stands between </l>
 							<l>Me and the crown but Foscari. To-night--- </l>
@@ -1922,7 +1933,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Eriz.</speaker>
 							<l>Hast thou still thy dagger? </l>
-							<l>In, and I'll tell thee more. This very night!</l>
+							<l>In, and I’ll tell thee more. This very night!</l>
 						</sp>
 						<stage type=" business">Exeunt.</stage>
 						<stage>END OF ACT THE SECOND.</stage>
@@ -1955,7 +1966,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Laura.</speaker>
-							<l>It was no day for Venice. 'Twould have been </l>
+							<l>It was no day for Venice. ’Twould have been </l>
 							<l>A calm sweet stillness in our country home, </l>
 							<l>Bowered amid green leaves and growing flowers, </l>
 							<l>With fragrant airs about us, and soft light, </l>
@@ -2050,7 +2061,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Yet how kind, </l>
 							<l>How exquisitely fond! Cosmo must know, </l>
 							<l>And, Laura, Cosmo never flies from thee, </l>
-							<l> And thou may'st ask---</l>
+							<l> And thou may’st ask---</l>
 						</sp>
 						<sp>
 							<speaker>Laura.</speaker>
@@ -2064,7 +2075,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Cam.</speaker>
 							<l>To the proud Ducal Palace, where they hold </l>
 							<l>High feasting in his honour. There the dance, </l>
-							<l>And the quaint masque, and music's softer strains </l>
+							<l>And the quaint masque, and music’s softer strains </l>
 							<l>Minister to his praises.</l>
 						</sp>
 						<sp>
@@ -2077,12 +2088,12 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Cam.</speaker>
 							<l>Ah! would I were, since Foscari is there; </l>
-							<l>That is enough for me! Where'er he is, </l>
+							<l>That is enough for me! Where’er he is, </l>
 							<l>In tent or battle-field---Hark! what is that? </l>
-							<l>That music? Oh 'tis he! 'tis Foscari! </l>
+							<l>That music? Oh ’tis he! ’tis Foscari! </l>
 							<l>Dost thou not know the strain, the wandering strain, </l>
-							<l>Trembling and floating like a spirit's song, </l>
-							<l>With many a---Hark again!---'Tis he! 'tis he! </l>
+							<l>Trembling and floating like a spirit’s song, </l>
+							<l>With many a---Hark again!---’Tis he! ’tis he! </l>
 							<l>That air belongs to him even as a name </l>
 							<l>It thrills my very heart. Am I not pale?</l>
 						</sp>
@@ -2114,7 +2125,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Fos.</speaker>
 							<l>My Camilla---Come at last! </l>
-							<l>Why this is chiding! Can'st thou chide, Camilla?</l>
+							<l>Why this is chiding! Can’st thou chide, Camilla?</l>
 						</sp>
 						<sp>
 							<speaker>Laura.</speaker>
@@ -2126,9 +2137,9 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Lady Laura! </l>
 							<l>Forgive me that I saw you not. Camilla, </l>
 							<l>Chide on---nay thou art smiling---Come begin! </l>
-							<l>I'd rather hear thy chidings than the praise </l>
+							<l>I’d rather hear thy chidings than the praise </l>
 							<l>Of all the world beside. Let me but hear </l>
-							<l>Thy voice, whate'er thou speakest.</l>
+							<l>Thy voice, whate’er thou speakest.</l>
 						</sp>
 						<sp>
 							<speaker>Cam.</speaker>
@@ -2179,7 +2190,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Fos.</speaker>
-							<l>And is not that enough? Would'st thou crowd in </l>
+							<l>And is not that enough? Would’st thou crowd in </l>
 							<l>More tediousness? Oh thou unmerciful!</l>
 						</sp>
 						<sp>
@@ -2199,11 +2210,11 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Fos.</speaker>
 							<l>Perhaps I love </l>
 							<pb n="36"/>
-							<l>To visit my heart's treasure by that light </l>
+							<l>To visit my heart’s treasure by that light </l>
 							<l>When misers seek their buried hoards; to steal </l>
-							<l>Upon the loved one, like a mermaid's song, </l>
+							<l>Upon the loved one, like a mermaid’s song, </l>
 							<l>Unseen and floating between sea and sky; </l>
-							<l>To creep upon her in love's loveliest hour, </l>
+							<l>To creep upon her in love’s loveliest hour, </l>
 							<l>Not in her daylight beauty with the glare </l>
 							<l>Of the bright sun around her, but thus pure </l>
 							<l>And white and delicate, under the cool moon </l>
@@ -2241,12 +2252,12 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Fos.</speaker>
 							<l>Well! Thou shalt hear the truth. </l>
-							<l>Cheer thee! 'Tis nought to weep for. At the Senate </l>
+							<l>Cheer thee! ’Tis nought to weep for. At the Senate </l>
 							<l>There were to-day some hasty words.---Erizzo, </l>
 							<l>Thy subtle kinsman, he was most to blame--- </l>
 							<l> I was too hot, too rash; but I implored </l>
 							<pb n="37"/>
-							<l>Donato's pardon, and am half forgiven; </l>
+							<l>Donato’s pardon, and am half forgiven; </l>
 							<l>Though yielding to the crafty Count, he shunned </l>
 							<l>To sup with us to-night.</l>
 						</sp>
@@ -2258,16 +2269,16 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Fos.</speaker>
 							<l>There is no cause for fear. This sudden storm </l>
 							<l>Is but a July shower that sweeps away </l>
-							<l>The o'erblown roses. Cosmo is our friend, </l>
-							<l>Our truest warmest friend; and well thou know'st </l>
-							<l>Thy father's kindly heart; he loves thee so; </l>
+							<l>The o’erblown roses. Cosmo is our friend, </l>
+							<l>Our truest warmest friend; and well thou know’st </l>
+							<l>Thy father’s kindly heart; he loves thee so; </l>
 							<l>Aye, and he loves me too; and he shall love me </l>
 							<l>Better than ever.</l>
 						</sp>
 						<sp>
 							<speaker>Laura.</speaker>
 							<l>He shall love! Lord Foscari </l>
-							<l>Thou'rt a true soldier. Wilt thou conquer love?</l>
+							<l>Thou’rt a true soldier. Wilt thou conquer love?</l>
 						</sp>
 						<sp>
 							<speaker>Fos.</speaker>
@@ -2283,7 +2294,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>And deep respect, and true observance, Laura. </l>
 							<l>Shake not thy head, Camilla. He shall love me. </l>
 							<l>What is he not thy father! Smile on me. </l>
-							<l>Think'st thou that if I feared to lose thee I </l>
+							<l>Think’st thou that if I feared to lose thee I </l>
 							<l>Should be thus tranquil?</l>
 							<stage type=" business">Exit Laura.</stage>
 						</sp>
@@ -2314,7 +2325,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Cam.</speaker>
 							<l>Aye, her merry glance;</l>
 							<pb n="38"/>
-							<l>But we do miss her. 'Twas a saucy thought, </l>
+							<l>But we do miss her. ’Twas a saucy thought, </l>
 							<l>My pretty gentle Laura!</l>
 						</sp>
 						<sp>
@@ -2324,7 +2335,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Cam.</speaker>
 							<l>Yes, tall and beautiful and rarely good. </l>
-							<l>Oh 'tis the kindest heart! We think she'll make--- </l>
+							<l>Oh ’tis the kindest heart! We think she’ll make--- </l>
 							<l>What is that noise?</l>
 						</sp>
 						<sp>
@@ -2340,10 +2351,10 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Fos.</speaker>
-							<l>'Tis thunder, love, </l>
+							<l>’Tis thunder, love, </l>
 							<l>And that hath stirred thy spirits. Cheer thee, dearest; </l>
-							<l>A soldier's wife should be as brave as steel. </l>
-							<l>What did'st thou say of Laura?</l>
+							<l>A soldier’s wife should be as brave as steel. </l>
+							<l>What did’st thou say of Laura?</l>
 						</sp>
 						<sp>
 							<speaker>Cam.</speaker>
@@ -2361,13 +2372,13 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>To treat her as a child, the dearest child, </l>
 							<l>The loveliest and the gentlest,---but a child. </l>
 							<l>Francesco, thou must praise her---Ha! again! </l>
-							<l>That is no thunder-clap. My father's door!--- </l>
+							<l>That is no thunder-clap. My father’s door!--- </l>
 							<l>Oh go! go! go!</l>
 						</sp>
 						<sp>
 							<speaker>Fos.</speaker>
 							<l>My dear Camilla, no! </l>
-							<l>Thou can'st not fear me, I will be as calm, </l>
+							<l>Thou can’st not fear me, I will be as calm, </l>
 							<l>As humble---</l>
 						</sp>
 						<sp>
@@ -2411,11 +2422,11 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Cam.</speaker>
-							<l> I'm glad </l>
+							<l> I’m glad </l>
 							<l>That he is gone. Fear hath so mastered me </l>
 							<l>I stumble on the level floor. Thank heaven </l>
 							<l>They are both safe, my dearest Foscari, </l>
-							<l>My dearest father! There's no danger now; </l>
+							<l>My dearest father! There’s no danger now; </l>
 							<l>And yet the night grows wilder. What a flash! </l>
 							<l>And I have sent him forth into the storm, </l>
 							<l>I, that so love him! I have sent him forth </l>
@@ -2432,7 +2443,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Laura.</speaker>
-							<l>What's that?</l>
+							<l>What’s that?</l>
 						</sp>
 						<sp>
 							<speaker>Cam.</speaker>
@@ -2463,7 +2474,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Of mirth and motion. Sweet ones, to the dance! </l>
 							<l>Where is this Foscari? Gentles, in my youth </l>
 							<l>He had been held a recreant that forsook </l>
-							<l>The revel, and the light of ladies' eyes, </l>
+							<l>The revel, and the light of ladies’ eyes, </l>
 							<l>And play of twinkling feet. Degenerate boy!</l>
 						</sp>
 						<sp>
@@ -2471,17 +2482,17 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Degenerate days! Ah! we could tell such tales </l>
 							<l>Of the deep merriment, the gorgeous banquet, </l>
 							<l>The high festivity of our old time! </l>
-							<l>Thou may'st smile, Zeno, but his Highness knows </l>
+							<l>Thou may’st smile, Zeno, but his Highness knows </l>
 							<l>Bright mirth is on the wane. Our puny sons </l>
-							<l>Shew but faint flashes of their father's fire.</l>
+							<l>Shew but faint flashes of their father’s fire.</l>
 						</sp>
 						<sp>
 							<speaker>Zeno.</speaker>
-							<l>Believe him not, fair maids! 'Tis but the vaunt </l>
+							<l>Believe him not, fair maids! ’Tis but the vaunt </l>
 							<l>Of vaunting age. Believe him not. Why, Moro, </l>
 							<l>Thy father in those mirthful days hath said </l>
 							<l>The same to thee, and his to him; yet still </l>
-							<l>'Tis merry Venice. Forty years to come </l>
+							<l>’Tis merry Venice. Forty years to come </l>
 							<l>We, too, may boast us of our jovial prime, </l>
 							<l>Nor yet the world grow sadder. Fear it not. </l>
 							<l>His Highness will not join thee, Signor Moro; </l>
@@ -2490,9 +2501,9 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Doge.</speaker>
 							<l>What a bribe </l>
-							<l>Is that to aid thy cause! But Moro's right; </l>
+							<l>Is that to aid thy cause! But Moro’s right; </l>
 							<l>We were fine gallants. Niece, I prythee see </l>
-							<l> That all are welcomed. Where's thy sister Melfi?</l>
+							<l> That all are welcomed. Where’s thy sister Melfi?</l>
 						</sp>
 						<sp>
 							<speaker>2nd Gent.</speaker>
@@ -2508,7 +2519,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Gent.</speaker>
 							<l>We miss </l>
-							<l>Signor Donato's daughter.</l>
+							<l>Signor Donato’s daughter.</l>
 						</sp>
 						<sp>
 							<speaker>Doge.</speaker>
@@ -2516,11 +2527,11 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>My pretty sweet Camilla!---Fair Olivia, </l>
 							<l>Let Trevisano lead thee to the dance. </l>
 							<l>Were I one ten years younger, trust me, Sir, </l>
-							<l>I'd not resign this hand. Now a light measure. </l>
+							<l>I’d not resign this hand. Now a light measure. </l>
 							<stage type="setting">A Dance.</stage>
-							<l>Is't not a peerless nymph? The youngest Grace </l>
+							<l>Is’t not a peerless nymph? The youngest Grace </l>
 							<l>Leading her linked sisters through the maze </l>
-							<l>Of blossom'd myrtles upon Ida's side, </l>
+							<l>Of blossom’d myrtles upon Ida’s side, </l>
 							<l>Is not so light of foot. Rest thee, dear maid. </l>
 							<l>What is that? Thunder?</l>
 						</sp>
@@ -2573,7 +2584,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Fos.</speaker>
 							<l>Tush, man, tush! </l>
 							<l>Ho! a brisk measure! Drown with merry notes </l>
-							<l>Count Zeno's merry riddles! Wilt thou dance </l>
+							<l>Count Zeno’s merry riddles! Wilt thou dance </l>
 							<l>With me, dear lady? Do not say me No!</l>
 						</sp>
 						<sp>
@@ -2588,7 +2599,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Doge.</speaker>
 							<l>Good niece, </l>
 							<l>Will not the Lady Claudia join the dance? </l>
-							<l>Seek her. I'm young and light enough to night </l>
+							<l>Seek her. I’m young and light enough to night </l>
 							<l>To mingle there myself. What ails the music? </l>
 							<l>Quicker! Why break they off? Dear Zeno ask.</l>
 						</sp>
@@ -2636,10 +2647,10 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Donato murdered! the beloved Donato! </l>
 							<l>The second name of Venice! Mine old friend! </l>
 							<l>Lords, to the council. This is not a tale </l>
-							<l>For woman's gentleness. Good night to all. </l>
+							<l>For woman’s gentleness. Good night to all. </l>
 							<stage type=" business">Exeunt Ladies, and some Gentlemen.</stage>
 							<pb n="43"/>
-							<l>Would he had ta'en my hand!</l>
+							<l>Would he had ta’en my hand!</l>
 						</sp>
 						<sp>
 							<speaker>Fos.</speaker>
@@ -2649,7 +2660,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Eriz.</speaker>
 							<l>What dost thou </l>
-							<l>Doubt of Donato's death? Thou?</l>
+							<l>Doubt of Donato’s death? Thou?</l>
 						</sp>
 						<sp>
 							<speaker>Fos.</speaker>
@@ -2711,14 +2722,14 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Cos.</speaker>
-							<l>'Tis no midnight thief, </l>
+							<l>’Tis no midnight thief, </l>
 							<l>No hired assassin, no poor petty villain;--- </l>
 							<l>This is a fall, as of the morning star, </l>
 							<pb n="44"/>
 							<l>A death such as the first great slayer saw </l>
-							<l>When Abel lay at his feet,---but I'll have justice! </l>
+							<l>When Abel lay at his feet,---but I’ll have justice! </l>
 							<l>There be hearts here will crack, old valiant hearts </l>
-							<l> When they shall hear this tale,---but I'll have justice!</l>
+							<l> When they shall hear this tale,---but I’ll have justice!</l>
 						</sp>
 						<sp>
 							<speaker>Doge.</speaker>
@@ -2855,7 +2866,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Doge.</speaker>
 							<l>Those lights! Those lights! </l>
 							<l>They pierce my eye-balls, dart into my brain! </l>
-							<l>If there be any pity left i' the world </l>
+							<l>If there be any pity left i’ the world </l>
 							<l>Make me a darkness and a silence, Zeno, </l>
 							<l>That I may pray.</l>
 						</sp>
@@ -2977,7 +2988,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Doge.</speaker>
 							<l>Gracious heaven </l>
 							<l>I thank thee! Now the weight is off my soul. </l>
-							<l>I sinned in my black fear. Where's the accuser? </l>
+							<l>I sinned in my black fear. Where’s the accuser? </l>
 							<l>Let him stand forth. Cosmo---Signor Donato, </l>
 							<l>Speak.</l>
 						</sp>
@@ -2990,7 +3001,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Doge.</speaker>
-							<l>Speak, pr'y thee, speak.</l>
+							<l>Speak, pr’y thee, speak.</l>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
@@ -3001,7 +3012,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>For stronger, bolder, hardier, he to me </l>
 							<l>Was as an elder brother. And his home </l>
 							<l>Was mine, and mine was his---Oh he has sate </l>
-							<l>A hundred times on that dear father's knee, </l>
+							<l>A hundred times on that dear father’s knee, </l>
 							<l>His little head nestling against that breast, </l>
 							<l>Where now---Oh Foscari, hadst thou slain me </l>
 							<l>My last word had been pardon! But my father, </l>
@@ -3015,14 +3026,14 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
-							<l>Camilla's father--- </l>
+							<l>Camilla’s father--- </l>
 							<l>Poor, poor Camilla!</l>
 						</sp>
 						<sp>
 							<speaker>Erizzo.</speaker>
 							<stage>(aside)</stage>
 							<l>Ah thou hast it now! </l>
-							<l>'Tis a fair woman's soft and liquid name </l>
+							<l>’Tis a fair woman’s soft and liquid name </l>
 							<l>That stings thy soul! Good, good.---Ho! Officer! </l>
 							<stage type="delivery">Apart to an Officer, giving him a paper.</stage>
 							<l>Deliver that and bring the witness hither, </l>
@@ -3033,7 +3044,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Doge.</speaker>
 							<l>Signor Donato, </l>
 							<l> I pray you check these pardonable tears. </l>
-							<l>Were this a place for passion, what's thy grief </l>
+							<l>Were this a place for passion, what’s thy grief </l>
 							<l>Measured with mine? The death of all thy name </l>
 							<l>To this suspense, this agony, this shame, </l>
 							<l>That eats away the soul? What is thy grief--- </l>
@@ -3049,11 +3060,11 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>This miserable duty. I can tell, </l>
 							<l>For I by chance was there, this tale of blood </l>
 							<l>And mystery. The late unhappy feud </l>
-							<l>Is known to all. Returning from St. Mark's </l>
+							<l>Is known to all. Returning from St. Mark’s </l>
 							<l>With my young kinsman in his Gondola--- </l>
 							<l>For I had missed of mine---we landed close </l>
 							<l>To the Donato Palace, as the bell </l>
-							<l>Was tolling midnight. 'Twas an awful storm; </l>
+							<l>Was tolling midnight. ’Twas an awful storm; </l>
 							<l>But by the flashing lightning we saw one </l>
 							<l>Leap from the balcony---a Cavalier </l>
 							<l>Splendid in dress and air. The lightning glared </l>
@@ -3077,7 +3088,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Into a waiting Gondola. I called, </l>
 							<l>But Foscari answered not; and Cosmo spake, </l>
 							<l>Betwixt a sigh and smile, of fair Camilla, </l>
-							<l>Of their long loves, and of the morning's ire, </l>
+							<l>Of their long loves, and of the morning’s ire, </l>
 							<l>And how he hoped this dark and sudden cloud </l>
 							<l>Would speedily pass away. Even as he spake, </l>
 							<l>Whilst loitering on the steps, we heard a shriek </l>
@@ -3118,7 +3129,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Hath told ye how we found the corse. This sword, </l>
 							<l>The well-known sword of Foscari, was plunged </l>
 							<l>Deep in his gory breast; beside him lay </l>
-							<l>This hat and cloak, the splendid soldier's garb </l>
+							<l>This hat and cloak, the splendid soldier’s garb </l>
 							<l>Of Foscari; no man had approached the house </l>
 							<l>Save only Foscari; and his last word, </l>
 							<l>Mingled with cries of murder and of help, </l>
@@ -3130,11 +3141,11 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Foscari.</speaker>
-							<l>'Tis mine.</l>
+							<l>’Tis mine.</l>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
-							<l>He's guilty. 'Twas the last faint hope </l>
+							<l>He’s guilty. ’Twas the last faint hope </l>
 							<l>On this side Heaven.</l>
 						</sp>
 						<sp>
@@ -3145,7 +3156,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Foscari.</speaker>
-							<l>'Tis mine; that which lay sheathed in victory </l>
+							<l>’Tis mine; that which lay sheathed in victory </l>
 							<l>Before ye yesterday; that which I bore </l>
 							<l> Triumphing through the battle. What a blaze </l>
 							<l>Streamed from the sparkling steel---how bright, how pure, </l>
@@ -3186,7 +3197,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Cosmo.</speaker>
 							<l>She walks as in a heavy dream; her senses </l>
 							<l>Are stupified by sorrow. Count Erizzo, </l>
-							<l>Why dids't thou send for her? Why bring her here? </l>
+							<l>Why dids’t thou send for her? Why bring her here? </l>
 							<l>Had we not breaking hearts enow before </l>
 							<l>Without poor, poor Camilla?</l>
 						</sp>
@@ -3222,8 +3233,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Here at thy feet, and lean my aching head </l>
 							<l>Against thy knee---Oh how it throbs!---and bury </l>
 							<l>My face within thy cloak. What ails me, Father, </l>
-							<l>That my heart flutters so? Feel here---He's cold! </l>
-							<l>He's dead! He's dead!</l>
+							<l>That my heart flutters so? Feel here---He’s cold! </l>
+							<l>He’s dead! He’s dead!</l>
 						</sp>
 						<sp>
 							<speaker>Erizzo.</speaker>
@@ -3242,7 +3253,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Erizzo.</speaker>
 							<l>Leave him; he is a murderer. </l>
-							<l>Thy father's murderer!</l>
+							<l>Thy father’s murderer!</l>
 						</sp>
 						<sp>
 							<speaker>Camilla.</speaker>
@@ -3282,7 +3293,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Noble lady, </l>
 							<l>Thou art before the assembled power of Venice, </l>
 							<pb n="54"/>
-							<l>Before thy father's corse, before high Heaven--- </l>
+							<l>Before thy father’s corse, before high Heaven--- </l>
 							<l>Answer me truly, lady---Didst thou hear </l>
 							<l>Thy murdered father call on Foscari?</l>
 						</sp>
@@ -3293,12 +3304,12 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Erizzo.</speaker>
 							<l>Didst thou not hear </l>
-							<l>Foscari's name mixed with his dying shriek?</l>
+							<l>Foscari’s name mixed with his dying shriek?</l>
 						</sp>
 						<sp>
 							<speaker>Camilla.</speaker>
-							<l>He's innocent! Oh I would stake my life </l>
-							<l>On Foscari's innocence.</l>
+							<l>He’s innocent! Oh I would stake my life </l>
+							<l>On Foscari’s innocence.</l>
 						</sp>
 						<sp>
 							<speaker>Doge.</speaker>
@@ -3340,7 +3351,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Of his bright diadem; I have no power </l>
 							<l>Save as the whetted axe to strike and slay, </l>
 							<l>A will-less instrument of the iron law </l>
-							<l>Of Venice. Daughter---Thou that should'st have been </l>
+							<l>Of Venice. Daughter---Thou that should’st have been </l>
 							<l>My daughter, we are martyrs at the stake, </l>
 							<pb n="55"/>
 							<l>And must endure. Shall we not copy him, </l>
@@ -3369,7 +3380,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Foscari.</speaker>
-							<l>Oh woman's love, </l>
+							<l>Oh woman’s love, </l>
 							<l>Pure nurse of kind and charitable thoughts, </l>
 							<l>Wiser than wisdom, instinct of the soul, </l>
 							<l>How do I bless thee holiest love! Camilla, </l>
@@ -3405,7 +3416,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Erizzo.</speaker>
 							<stage>(Aside.)</stage>
 							<l> All curses on </l>
-							<l>The coward Celso! He'll escape me yet. </l>
+							<l>The coward Celso! He’ll escape me yet. </l>
 							<pb n="56"/>
 							<stage type="delivery">Aloud.)</stage>
 							<l>The facts? The proofs? The witnesses?</l>
@@ -3438,7 +3449,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Foscari.</speaker>
 							<l>To thee! While still this arm hath marrow in it! </l>
 							<l>To thee! Cosmo---thou---thou---Be tender of her, </l>
-							<l>Be very tender---'tis a broken flower--- </l>
+							<l>Be very tender---’tis a broken flower--- </l>
 							<l>And pardon her her love. Take her. The pain </l>
 							<l>Of death is over now. Proceed, my lords.</l>
 						</sp>
@@ -3498,7 +3509,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l> Endure even now? Disgrace, suspicion, scorn, </l>
 							<l>Hatred and haughty pity, and that last </l>
 							<l>Worst pang---her love, her misery. These are tortures! </l>
-							<l>Let me have something that a warrior's soul </l>
+							<l>Let me have something that a warrior’s soul </l>
 							<l>May strive against and conquer. Come, the rack!</l>
 						</sp>
 						<sp>
@@ -3571,7 +3582,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Oh that voice </l>
 							<l>Which was such perfect music,---which seemed made </l>
 							<l>For truth and thought, fit organ, how it jars </l>
-							<l>My very soul! What would'st thou?</l>
+							<l>My very soul! What would’st thou?</l>
 						</sp>
 						<sp>
 							<speaker>Foscari.</speaker>
@@ -3587,7 +3598,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l> Shall meet no more. Thou wilt not join the headsman </l>
 							<l>To see the axe fall on my neck, nor follow </l>
 							<l>The shouting multitude who, yesterday, </l>
-							<l>Hail'd me a god, and, with like shouts, to-morrow </l>
+							<l>Hail’d me a god, and, with like shouts, to-morrow </l>
 							<l>Will drag me to the block. We meet no more; </l>
 							<l>And as a dying man I fain would part </l>
 							<l>In charity. We were friends, Cosmo.---</l>
@@ -3597,12 +3608,12 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Friends! </l>
 							<l>I sinned in listening; but whilst he spake </l>
 							<l>A world of kindly thoughts, a gush of the deep </l>
-							<l>Old passionate love came o'er my heart---Forgive me </l>
+							<l>Old passionate love came o’er my heart---Forgive me </l>
 							<l>Oh blessed shade! Friends! Why thy crime were common </l>
 							<l>Wanting that damning dye---a simple murder! </l>
 							<l>What though of one kind, noble, generous, </l>
 							<l>Whose princely spirit scattered happiness </l>
-							<l>As the sun light---a single sin! But 'twas </l>
+							<l>As the sun light---a single sin! But ’twas </l>
 							<l>My father, mine---avenging angel hear!--- </l>
 							<l>Mine, that so loved thee.---</l>
 						</sp>
@@ -3649,7 +3660,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Doge.</speaker>
-							<l>Thou said'st thou wast prepared.</l>
+							<l>Thou said’st thou wast prepared.</l>
 						</sp>
 						<sp>
 							<speaker>Foscari.</speaker>
@@ -3683,7 +3694,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Yes, father. The one pang, </l>
 							<l>The worse than death,---the infamy is past. </l>
 							<pb n="61"/>
-							<l>The dagger's in my breast; now drive it home, </l>
+							<l>The dagger’s in my breast; now drive it home, </l>
 							<l>And with a merciful speed.</l>
 						</sp>
 						<sp>
@@ -3710,11 +3721,11 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Of mercy, give me death, painfullest death, </l>
 							<l>And I will thank ye---bless ye! Give me death! </l>
 							<l>Ye cannot give me life. Sooner the bay, </l>
-							<l>That wreathes the warrior's brows, shall spread and flourish </l>
+							<l>That wreathes the warrior’s brows, shall spread and flourish </l>
 							<l>In a dark mine, shut up from sun and air, </l>
 							<l>Than I can live without a proud respect </l>
-							<l>A white unblemish'd name, the light and breath </l>
-							<l> Of honour. Death I say!---a murderer's death! </l>
+							<l>A white unblemish’d name, the light and breath </l>
+							<l> Of honour. Death I say!---a murderer’s death! </l>
 							<l>Ye dare not change the laws.</l>
 						</sp>
 						<sp>
@@ -3723,11 +3734,11 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Foscari.</speaker>
-							<l>Cosmo, if e'er you loved me, call on them </l>
+							<l>Cosmo, if e’er you loved me, call on them </l>
 							<l>For justice---bloody justice! Doge of Venice, </l>
 							<l>Maintain the insulted laws! Send me to death,--- </l>
 							<l>To instant death! Oh father, free thy son </l>
-							<l>From this dread load of misery! Would'st thou see </l>
+							<l>From this dread load of misery! Would’st thou see </l>
 							<l>Thy only child shunned as a leper, father? </l>
 							<l>Sent out into the world a second Cain? </l>
 							<l>Oh give me death! death! death!</l>
@@ -3773,8 +3784,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Before whose throne condemners and condemned </l>
 							<l>All shall stand equal, at whose feet I swear, </l>
 							<l>By what my soul holds sacred---by the spurs </l>
-							<l>Of knighthood---by the Christian's holier Cross, </l>
-							<l>And by that old man's white and reverend locks, </l>
+							<l>Of knighthood---by the Christian’s holier Cross, </l>
+							<l>And by that old man’s white and reverend locks, </l>
 							<l>That I am innocent. Ye, who disbelieve, </l>
 							<l>And ye who doubt, and ye, the grovelling few, </l>
 							<l>Believing who condemn, I shower on all </l>
@@ -3829,9 +3840,9 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
-							<l>Straight from her father's bier, where all night long </l>
-							<l>She watch'd and wept, to seek---Go to, thou'rt wrong! </l>
-							<l>Thou'rt wrong.</l>
+							<l>Straight from her father’s bier, where all night long </l>
+							<l>She watch’d and wept, to seek---Go to, thou’rt wrong! </l>
+							<l>Thou’rt wrong.</l>
 						</sp>
 						<sp>
 							<speaker>Erizzo.</speaker>
@@ -3840,7 +3851,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
-							<l>Was she veil'd?</l>
+							<l>Was she veil’d?</l>
 						</sp>
 						<sp>
 							<speaker>Erizzo.</speaker>
@@ -3848,8 +3859,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
-							<l>Whom thou saw'st. </l>
-							<l>She---not my sister!---Was she veil'd?</l>
+							<l>Whom thou saw’st. </l>
+							<l>She---not my sister!---Was she veil’d?</l>
 						</sp>
 						<sp>
 							<speaker>Erizzo.</speaker>
@@ -3864,7 +3875,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>By the pliant grace </l>
 							<l>Of the young form---the goddess step---the charm </l>
 							<l>Of motion. With such port the queenly swan </l>
-							<l>Glides o'er the waters. Dost thou not remember </l>
+							<l>Glides o’er the waters. Dost thou not remember </l>
 							<l>When Foscari once---</l>
 							<pb n="64"/>
 						</sp>
@@ -3874,14 +3885,14 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Erizzo.</speaker>
-							<l>She's here.</l>
+							<l>She’s here.</l>
 							<stage type=" business">Enter Camilla.</stage>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
-							<l>And veil'd! Whence com'st thou, sister? speak. </l>
+							<l>And veil’d! Whence com’st thou, sister? speak. </l>
 							<l>Why hast thou borne those tears and that wan face </l>
-							<l>Abroad amongst the happy? Whence com'st thou?</l>
+							<l>Abroad amongst the happy? Whence com’st thou?</l>
 						</sp>
 						<sp>
 							<speaker>Camilla.</speaker>
@@ -3893,7 +3904,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Camilla.</speaker>
-							<l>From St. Mark's.</l>
+							<l>From St. Mark’s.</l>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
@@ -3908,7 +3919,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Camilla.</speaker>
 							<l>My lord Erizzo, </l>
 							<l>I seek not to deceive ye. I have seen </l>
-							<l>The Doge. But 'twas another wretcheder </l>
+							<l>The Doge. But ’twas another wretcheder </l>
 							<l>Of whom I spake,---one who hath long to live. </l>
 							<l>I come from where beneath the leaden roofs </l>
 							<l>Foscari lies.</l>
@@ -3923,7 +3934,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Camilla.</speaker>
-							<l>He's innocent! </l>
+							<l>He’s innocent! </l>
 							<l>Turn not away, shake me not off, as though </l>
 							<l>I were some loathed reptile. Cosmo! Brother! </l>
 							<l>We two are left alone in the wide world, </l>
@@ -3932,7 +3943,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
-							<l>What would'st thou? </l>
+							<l>What would’st thou? </l>
 							<pb n="65"/>
 							<l>How may I comfort thee? Sweet gentle soul, </l>
 							<l> Her tears are daggers. Speak.</l>
@@ -3957,7 +3968,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Camilla.</speaker>
 							<l>And I--- </l>
-							<l>We were betroth'd; he goes a sentenc'd wretch--- </l>
+							<l>We were betroth’d; he goes a sentenc’d wretch--- </l>
 							<l>But innocent, most innocent! He goes </l>
 							<l>To scorn, to exile, and to misery, </l>
 							<l>And I---I came to say farewell to thee </l>
@@ -3976,8 +3987,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Camilla.</speaker>
 							<l>Sir, I am not mad; </l>
-							<l>I'm a Donato born, and drank in courage </l>
-							<l>Even with my mother's milk. What if I shake! </l>
+							<l>I’m a Donato born, and drank in courage </l>
+							<l>Even with my mother’s milk. What if I shake! </l>
 							<l>Within this trembling frame there is a heart </l>
 							<l>As firm as thine. Speak to me ere we part, </l>
 							<l>My brother! Speak to me, whatever words, </l>
@@ -3997,8 +4008,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Cosmo.</speaker>
 							<l>My sister, sit thee down.--- </l>
 							<l>Misery hath brought her to this pass.---Camilla, </l>
-							<l>We had a father once:---he's slain. Would'st thou </l>
-							<l>Join this white hand, which he so lov'd to mould </l>
+							<l>We had a father once:---he’s slain. Would’st thou </l>
+							<l>Join this white hand, which he so lov’d to mould </l>
 							<l>Within his own, the soft and dimpled hand, </l>
 							<l>With one---</l>
 							<pb n="66"/>
@@ -4012,14 +4023,14 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Cosmo.</speaker>
 							<l>We have no father now, </l>
 							<l>And we should love each other. Stay with me. </l>
-							<l>I am no tyrant-brother: I'll not force </l>
-							<l>Thy blooming beauty to some old man's bed </l>
-							<l>For high alliance; I'll not plunge thy youth </l>
+							<l>I am no tyrant-brother: I’ll not force </l>
+							<l>Thy blooming beauty to some old man’s bed </l>
+							<l>For high alliance; I’ll not plunge thy youth </l>
 							<l>Into that living tomb where the cold nun </l>
 							<l>Chants daily requiems, that thy dower may swell </l>
 							<l>My coffers; I but ask of thee to stay </l>
 							<l>With me in thy dear Venice, thy dear home, </l>
-							<l>Thy mistress, mine. I'll be to thee, Camilla, </l>
+							<l>Thy mistress, mine. I’ll be to thee, Camilla, </l>
 							<l>A father, brother, lover. Stay with me. </l>
 							<l>I will be very kind to thee.</l>
 						</sp>
@@ -4043,7 +4054,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Camilla.</speaker>
-							<l>Aye, he urg'd all that thou canst say against </l>
+							<l>Aye, he urg’d all that thou canst say against </l>
 							<l>Himself and me---in vain. My heart is firm. </l>
 							<l>I go. But love me still, oh love me still </l>
 							<l>My brother!</l>
@@ -4059,21 +4070,21 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Cosmo.</speaker>
 							<l>Camilla! </l>
-							<l>I'd save thee from a crime, a damning crime--- </l>
+							<l>I’d save thee from a crime, a damning crime--- </l>
 							<l>Did he say that? From such a parricide, </l>
-							<l>Such unimagin'd sin---I tell thee, girl, </l>
+							<l>Such unimagin’d sin---I tell thee, girl, </l>
 							<l>The Roman harlot, she the infamous </l>
-							<l>That crush'd her father with her chariot wheels, </l>
-							<l>She'll be forgotten in thy monstrous guilt, </l>
+							<l>That crush’d her father with her chariot wheels, </l>
+							<l>She’ll be forgotten in thy monstrous guilt, </l>
 							<l>Whitened by thy black shame.</l>
 							<pb n="67"/>
 						</sp>
 						<sp>
 							<speaker>Camilla.</speaker>
 							<l>Oh father, father, </l>
-							<l>I call upon thee! Look on me from heav'n, </l>
-							<l>Search my whole soul---'tis white. Oh when some tale </l>
-							<l>Of woman's truth brought tears into my eyes, </l>
+							<l>I call upon thee! Look on me from heav’n, </l>
+							<l>Search my whole soul---’tis white. Oh when some tale </l>
+							<l>Of woman’s truth brought tears into my eyes, </l>
 							<l>How often hath he said---Be thou, too, faithful </l>
 							<l>In weal or woe! And now---farewell! farewell! </l>
 							<l>Cosmo, my heart is breaking---Say farewell, </l>
@@ -4091,8 +4102,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Cosmo.</speaker>
 							<l>Then go, </l>
 							<l>Outcast of earth and heaven, of God and man! </l>
-							<l>Abandon'd, spurn'd, abhorr'd, accurst! Go forth </l>
-							<l>A murderer's bride---worse! worse! What impious priest </l>
+							<l>Abandon’d, spurn’d, abhorr’d, accurst! Go forth </l>
+							<l>A murderer’s bride---worse! worse! What impious priest </l>
 							<l>Will dare profane the holy words that join </l>
 							<l>The pure of heart and hand for ye, for ye, </l>
 							<l>The parricides---Oh that she had but died </l>
@@ -4101,7 +4112,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Camilla.</speaker>
 							<l>One day, brother, </l>
-							<l>Thou'lt grieve for this. Now bless thee!</l>
+							<l>Thou’lt grieve for this. Now bless thee!</l>
 							<stage type=" business">Exit Camilla.</stage>
 						</sp>
 						<sp>
@@ -4110,17 +4121,17 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Erizzo.</speaker>
-							<l>She's gone.</l>
+							<l>She’s gone.</l>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
 							<l>Why let her go, foul stain upon our house! </l>
 							<l>She was his daughter still, and yesterday </l>
 							<l>An Angel! And he loved her and she him </l>
-							<l>With such a dotage! 'Twas a sight to see </l>
+							<l>With such a dotage! ’Twas a sight to see </l>
 							<l>How ere the pretty babe could speak its will, </l>
 							<l>The chubby hands would cling and fix themselves </l>
-							<l>Round its dear father's neck. Mother, or nurse, </l>
+							<l>Round its dear father’s neck. Mother, or nurse, </l>
 							<l>Or I, the elder child that played with her </l>
 							<l>Full half the day, were nothing if she caught </l>
 							<l>One glimpse of that dear father.</l>
@@ -4128,27 +4139,27 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Erizzo.</speaker>
-							<l>Now she'll hang </l>
-							<l> Around his murderer's neck.</l>
+							<l>Now she’ll hang </l>
+							<l> Around his murderer’s neck.</l>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
 							<l>Do ye all forget. </l>
-							<l>That I'm her brother? Ho, Camilla!</l>
+							<l>That I’m her brother? Ho, Camilla!</l>
 						</sp>
 						<sp>
 							<speaker>Erizzo.</speaker>
-							<l>'Twill be </l>
-							<l>A triumph 'mid their shame to these misproud </l>
+							<l>’Twill be </l>
+							<l>A triumph ’mid their shame to these misproud </l>
 							<l>Revengeful Foscari to bear off thus </l>
 							<l>The glory of your house.</l>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
-							<l>I'll rescue her. </l>
+							<l>I’ll rescue her. </l>
 							<l>Where is she? Is she gone? What ho, Camilla! </l>
-							<l>I'll follow her to the end of the earth. The laws </l>
-							<l>Give me a father's power. I'll save her yet. </l>
+							<l>I’ll follow her to the end of the earth. The laws </l>
+							<l>Give me a father’s power. I’ll save her yet. </l>
 							<l>Camilla! Ho, Camilla!</l>
 						</sp>
 						<sp>
@@ -4169,8 +4180,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Foscari.</speaker>
 							<l>Here then we part. Those Guards---send them away, </l>
 							<l>Let them not listen to the last faint word, </l>
-							<l>Nor gaze on the last lingering look Why doubt'st thou? </l>
-							<l>Fear me not---I'll be a true prisoner. </l>
+							<l>Nor gaze on the last lingering look Why doubt’st thou? </l>
+							<l>Fear me not---I’ll be a true prisoner. </l>
 							<l>I am a Foscari still, bound by one chain, </l>
 							<l>Honour. Send them away.</l>
 						</sp>
@@ -4196,9 +4207,9 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Foscari.</speaker>
 							<l>How can I waste </l>
-							<l>A word on such a reptile! I'd a world </l>
+							<l>A word on such a reptile! I’d a world </l>
 							<l>Of sad and loving things to say to thee, </l>
-							<l>But there's a weight just here---Oh father! father! </l>
+							<l>But there’s a weight just here---Oh father! father! </l>
 							<l>I thought to have been a comfort to thy age, </l>
 							<l>But I was born to spread a desolation </l>
 							<l>On all I love.</l>
@@ -4275,7 +4286,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>May ask my Candiote jailer if his prisoner </l>
 							<l>Be strictly kept. Then I shall sometimes see, </l>
 							<l>For surely he will shew it me, thy name, </l>
-							<l>Thy writing, something thou hast touched. 'Twill be </l>
+							<l>Thy writing, something thou hast touched. ’Twill be </l>
 							<l>A comfort.</l>
 						</sp>
 						<sp>
@@ -4293,7 +4304,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Doge.</speaker>
 							<l>Always. </l>
 							<l>By sun, or moon, or star; in the bright day </l>
-							<l>In the night's darkness, but one single thought </l>
+							<l>In the night’s darkness, but one single thought </l>
 							<l>Will dwell in my old heart---My banished son.</l>
 						</sp>
 						<sp>
@@ -4317,7 +4328,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Zeno.</speaker>
 							<l>I crave your pardon: </l>
 							<l>But I must pray the Doge to come with me </l>
-							<l> Straight to the Senate. 'Tis an earnest business. </l>
+							<l> Straight to the Senate. ’Tis an earnest business. </l>
 							<l>I do beseech your Highness. Leave him, Foscari! </l>
 							<l>Cling not together as your very souls </l>
 							<l>Were interlaced. The Senate, Doge, demands thee.</l>
@@ -4365,8 +4376,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Doge.</speaker>
-							<l>I pray you pardon me---I'm old--- </l>
-							<l>I'm very old.</l>
+							<l>I pray you pardon me---I’m old--- </l>
+							<l>I’m very old.</l>
 							<stage type=" business">Exeunt Doge and Zeno</stage>
 						</sp>
 						<sp>
@@ -4422,7 +4433,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>His body with sweet flowers like a bank in spring </l>
 							<l>Making death beautiful, to follow him </l>
 							<l>To his cold bed, and drop slow heavy tears </l>
-							<l>To the bell's knolling. She leaves grief to go </l>
+							<l>To the bell’s knolling. She leaves grief to go </l>
 							<l>With me, whom the world calls---Oh matchless love, </l>
 							<l>Life could not pay thee! Matchless, matchless love!</l>
 						</sp>
@@ -4434,7 +4445,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Foscari.</speaker>
 							<l>Matchless love! </l>
-							<l>We'll never part, we'll live and die together, </l>
+							<l>We’ll never part, we’ll live and die together, </l>
 							<pb n="73"/>
 							<l>There is a comfort in the word. Camilla, </l>
 							<l>Where are the guards, the ship? My heart beats high </l>
@@ -4444,16 +4455,16 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
-							<l>She's here! She's here. </l>
+							<l>She’s here! She’s here. </l>
 							<l>Move not a step. Dare not to stir. Camilla, </l>
 							<l>Follow me.</l>
 						</sp>
 						<sp>
 							<speaker>Foscari.</speaker>
 							<l>Who is he that dares obstruct </l>
-							<l>The mandate of the Senate? I'm an exile </l>
+							<l>The mandate of the Senate? I’m an exile </l>
 							<l>Travelling to banishment. All Venice knows </l>
-							<l> The piteous story of the Doge's son </l>
+							<l> The piteous story of the Doge’s son </l>
 							<l>Condemned by his own father, and of her </l>
 							<l>His true and faithful love. Now leave us, Sir; </l>
 							<l>Let us depart in peace.</l>
@@ -4476,9 +4487,9 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Foscari.</speaker>
 							<l>Mine! Mine own! </l>
-							<l>My very own! I've lost wealth, country, home, </l>
+							<l>My very own! I’ve lost wealth, country, home, </l>
 							<l>Fame, friends, and father; I have nothing left </l>
-							<l>Save thee, my dear one; but with thee I'm rich, </l>
+							<l>Save thee, my dear one; but with thee I’m rich, </l>
 							<l>And great, and happy. Now let us go forth </l>
 							<l>Into our banishment. Give me thy hand, </l>
 							<l>My wife.</l>
@@ -4487,11 +4498,11 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Cosmo.</speaker>
 							<l>Camilla, I command thee stay--- </l>
 							<l>The laws of Venice give to me a power </l>
-							<l>Absolute as a father's. Loose her, Sir. </l>
-							<l>Let go her hand. I warn ye part. They'll drive me </l>
+							<l>Absolute as a father’s. Loose her, Sir. </l>
+							<l>Let go her hand. I warn ye part. They’ll drive me </l>
 							<pb n="74"/>
 							<l>Into a madness. If thou be a man </l>
-							<l>Let's end this quarrel bravely.</l>
+							<l>Let’s end this quarrel bravely.</l>
 						</sp>
 						<sp>
 							<speaker>Camilla.</speaker>
@@ -4548,7 +4559,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>But this is such a bounty as might shame </l>
 							<l>The princely hand of friendship. Not the blade </l>
 							<l>Girt by a crowned Duke around my loins, </l>
-							<l>An Emperor's gift, the day I won my spurs </l>
+							<l>An Emperor’s gift, the day I won my spurs </l>
 							<l>In the Suabian victory, not that knightly sword </l>
 							<l>Was welcomer than this.</l>
 						</sp>
@@ -4590,7 +4601,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Canst thou not hasten. </l>
 							<stage type=" business">Enter Camilla and the Doge.</stage>
 							<stage type="business">entering)</stage>
-							<l>Foscari! He's slain! </l>
+							<l>Foscari! He’s slain! </l>
 							<l>Oh bloody, bloody brother! Kill me too! </l>
 							<l>Be merciful! Help!</l>
 						</sp>
@@ -4603,8 +4614,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<l>Away! </l>
 							<l>Thy hands are bloody!---Help, Doge Foscari! </l>
 							<l>Help Father!---The old man stands stiffening there </l>
-							<l>Into a statue---He'll die first Off! Off! </l>
-							<l>Wouldst kill him o'er again?---He bleeds to death! </l>
+							<l>Into a statue---He’ll die first Off! Off! </l>
+							<l>Wouldst kill him o’er again?---He bleeds to death! </l>
 							<l>Father, it is thy blood.</l>
 						</sp>
 						<sp>
@@ -4616,7 +4627,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Camilla.</speaker>
 							<l>He is not dead. Support him. </l>
 							<l>See how his eye-lids quiver. Foscari! </l>
-							<l>'Tis I, thy wife!</l>
+							<l>’Tis I, thy wife!</l>
 						</sp>
 						<sp>
 							<speaker>Foscari.</speaker>
@@ -4636,9 +4647,9 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Foscari.</speaker>
-							<l>Hear that! I'm innocent! Hear that! </l>
+							<l>Hear that! I’m innocent! Hear that! </l>
 							<l>The murderer is found! Nay, hold me not--- </l>
-							<l>I'm well---I'm strong. Father, there is no stain </l>
+							<l>I’m well---I’m strong. Father, there is no stain </l>
 							<l>In the long line of Foscari! Camilla, </l>
 							<l>My Faithfullest---</l>
 						</sp>
@@ -4677,7 +4688,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Erizzo.</speaker>
-							<l>There's no need. </l>
+							<l>There’s no need. </l>
 							<l>The work is done, well done---Signor Donato, </l>
 							<l>I thank thee still for that---and such revenge </l>
 							<l> Is cheaply bought with life.</l>
@@ -4689,7 +4700,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Erizzo.</speaker>
 							<l>Aye! Do ye know me? Not a man of ye </l>
-							<l>But is my tool or victim. I'm your master. </l>
+							<l>But is my tool or victim. I’m your master. </l>
 							<l>This was my aim when old Donato died, </l>
 							<l>And but that Celso dared not cope with Foscari </l>
 							<l>And sought to catch him in a subtler springe </l>
@@ -4717,7 +4728,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Cosmo.</speaker>
-							<l>'Tis I </l>
+							<l>’Tis I </l>
 							<l>That am the only murderer of the earth--- </l>
 							<l> I that slew him. Bring racks and axes---</l>
 						</sp>
@@ -4725,8 +4736,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Doge.</speaker>
 							<l>Live! </l>
 							<l>I pardon thee. He pardons thee. Live, Cosmo; </l>
-							<l>It is thy Prince's last behest. I've been </l>
-							<l>O'erlong a crowned slave. Go! dross to dross. </l>
+							<l>It is thy Prince’s last behest. I’ve been </l>
+							<l>O’erlong a crowned slave. Go! dross to dross. </l>
 							<stage type="business">Flinging off the Ducal Bonnet.</stage>
 							<l>And bruise the stones of Venice! Tell the senate </l>
 							<l>There lies their diadem. Now I am free! </l>
@@ -4745,7 +4756,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</sp>
 						<sp>
 							<speaker>Foscari.</speaker>
-							<l>Camilla! Is't Camilla? </l>
+							<l>Camilla! Is’t Camilla? </l>
 							<l>Is she not weeping? What canst thou weep now </l>
 							<l>When honour is redeemed and a bright name? </l>
 							<l>Why there should be no tear in all the world; </l>
@@ -4759,7 +4770,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<speaker>Foscari.</speaker>
 							<l>This joy </l>
 							<l>Is life. Who talked of death? I cannot die </l>
-							<l>In such a happiness. I'm well.</l>
+							<l>In such a happiness. I’m well.</l>
 						</sp>
 						<sp>
 							<speaker>Zeno.</speaker>
@@ -4788,14 +4799,14 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						<sp>
 							<speaker>Foscari.</speaker>
 							<l>Friends! Have they heard that I am innocent? </l>
-							<l>That I'm no murderer? That I do not shame </l>
-							<l>My father's glory? Let it be proclaimed---</l>
+							<l>That I’m no murderer? That I do not shame </l>
+							<l>My father’s glory? Let it be proclaimed---</l>
 							<l>Tell Venice---tell---</l>
 							<stage type="business">dies.</stage>
 						</sp>
 						<sp>
 							<speaker>Zeno.</speaker>
-							<l>He's gone.</l>
+							<l>He’s gone.</l>
 						</sp>
 						<sp>
 							<speaker>Camilla.</speaker>
@@ -4883,8 +4894,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 				
 				<listPlace sortKey="histPlaces">
 					<place xml:id="St_Marks_Place">
-						<placeName>St. Mark's Place</placeName>
-						<note resp="#err">The Piazza San Marco, or St. Mark's Square, the main public square in Venice, Italy. It is bounded on the eastern end by St. Mark's Basilica.</note>
+						<placeName>St. Mark’s Place</placeName>
+						<note resp="#err">The Piazza San Marco, or St. Mark’s Square, the main public square in Venice, Italy. It is bounded on the eastern end by St. Mark’s Basilica.</note>
 					</place>
 				</listPlace>
 				
@@ -4989,7 +5000,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 					<person xml:id="Duke_of_Milan_F" sex="m">
 						<persName>Duke of Milan</persName>
 						<occupation>nobleman</occupation>
-						<note type="bio" resp="#err">The fictionalized <persName ref="#Duke_of_Milan">Duke of Milan</persName> as referenced in Mitford's play <title ref="#Foscari_MRMplay">Foscari</title>.</note>
+						<note type="bio" resp="#err">The fictionalized <persName ref="#Duke_of_Milan">Duke of Milan</persName> as referenced in Mitford’s play <title ref="#Foscari_MRMplay">Foscari</title>.</note>
 					</person>
 				</listPerson>
 				
@@ -4997,7 +5008,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 					<person xml:id="Venoni_F" sex="m">
 						<persName>Venoni</persName>
 						<occupation>nobleman</occupation>
-						<note type="bio" resp="#err">A character, perhaps based on a historical person, who is referred to in Mitford's play <title ref="#Foscari_MRMplay">Foscari</title>.</note>
+						<note type="bio" resp="#err">A character, perhaps based on a historical person, who is referred to in Mitford’s play <title ref="#Foscari_MRMplay">Foscari</title>.</note>
 					</person>
 				</listPerson>
 				
@@ -5005,7 +5016,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 					<person xml:id="Loredano_F" sex="m">
 						<persName>Loredano</persName>
 						<occupation>nobleman</occupation>
-						<note type="bio" resp="#err">A character, perhaps based on the historical Pietro Loredano, who had rivaled Foscari for the title of Doge in 1423 and lost. In Mitford's play, Doge Foscari mentions that he has appointed Signor Loredano to the position of Procurator upon the death of Venoni.</note>
+						<note type="bio" resp="#err">A character, perhaps based on the historical Pietro Loredano, who had rivaled Foscari for the title of Doge in 1423 and lost. In Mitford’s play, Doge Foscari mentions that he has appointed Signor Loredano to the position of Procurator upon the death of Venoni.</note>
 					</person>
 				</listPerson>
 				
@@ -5051,7 +5062,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 							<placeName>Milan, Italy</placeName>
 						</death>
 						<occupation>ruler</occupation>
-						<note type="bio" resp="#err">Ruler of the Duchy of Milan during the Milan Wars as referenced in Mitford's play Foscari.</note>
+						<note type="bio" resp="#err">Ruler of the Duchy of Milan during the Milan Wars as referenced in Mitford’s play Foscari.</note>
 					</person>
 				</listPerson>
 			
@@ -5069,7 +5080,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 						</death>
 						<occupation>nobleman</occupation>
 						<occupation>military commander</occupation>
-						<note type="bio" resp="#err">Venetian nobleman and military commander who, in 1823, rivaled Francesco Foscari for the position of Doge of Venice. Though losing the appointment to Foscari, Loredan went on to continue his distinguished military career, along with his son, Giacomo (or Jacopo) Loredan, who also embarked upon a military career. Given the fact that Pietro Loredan died in 1438 (as well as the fact that the Foscari and Loredan families were bitter rivals), Mitford's fictional Loredano, whom the fictional Foscari has appointed as the new Procurator is likely only loosely based on the historical Pietro Loredan (if at all).</note>
+						<note type="bio" resp="#err">Venetian nobleman and military commander who, in 1823, rivaled Francesco Foscari for the position of Doge of Venice. Though losing the appointment to Foscari, Loredan went on to continue his distinguished military career, along with his son, Giacomo (or Jacopo) Loredan, who also embarked upon a military career. Given the fact that Pietro Loredan died in 1438 (as well as the fact that the Foscari and Loredan families were bitter rivals), Mitford’s fictional Loredano, whom the fictional Foscari has appointed as the new Procurator is likely only loosely based on the historical Pietro Loredan (if at all).</note>
 					</person>
 				</listPerson>
 			
@@ -5087,7 +5098,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 				<listOrg sortKey="fictOrgs">
 					<org xml:id="Senate_Venetian_F">
 						<persName>Venetian Senate in Foscari</persName>
-						<note type="bio" resp="#err">The Venetian Senate as represented in "Mitford's play Foscari.</note>
+						<note type="bio" resp="#err">The Venetian Senate as represented in "Mitford’s play Foscari.</note>
 					</org>
 				</listOrg>
 				
