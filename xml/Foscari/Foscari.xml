@@ -36,13 +36,10 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 				<title>Foscari: A Tragedy. By Mary Russell Mitford [London. Printed For G. B.
 					Whittaker 1826]</title>
 				<author>Mary Russell Mitford</author>
-
 				<editor>Elizabeth Raisanen</editor>
-
-
 				<sponsor><orgName>Mary Russell Mitford Society: Digital Mitford
 					Project</orgName></sponsor>
-				<sponsor>University of Pittsburgh at Greensburg</sponsor>
+				<sponsor><orgName>Penn State Erie, The Behrend College</orgName></sponsor>
 				<principal>Elisa Beshero-Bondar</principal>
 
 				<respStmt>
@@ -59,20 +56,17 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 			<editionStmt>
 				<edition>First digital edition in TEI P5, date: <date>3 November 2017</date>.</edition>
 			</editionStmt>
-
-
 			<publicationStmt>
 				<authority>Digital Mitford: The Mary Russell Mitford Archive</authority>
-				<pubPlace>Greensburg, PA, USA</pubPlace>
-				<date>2013</date>
+				<pubPlace>digitalmitford.org</pubPlace>
+				<date>2021</date>
 				<availability>
-					<licence>Distributed under a Creative Commons Attribution-ShareAlike 3.0
-						Unported License</licence>
+					<licence>Distributed under a Creative Commons
+						Attribution-ShareAlike 3.0 Unported License</licence>
 				</availability>
-
 			</publicationStmt>
 			<seriesStmt>
-				<title>Digital Mitford: The Mary Russell Mitford Archive</title>
+				<title>Digital Mitford: Drama</title>
 			</seriesStmt>
 
 			<notesStmt>
@@ -110,12 +104,20 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 				</msDesc>
 				
 				<bibl>
-					<title>Foscari: A Tragedy. In Five Acts</title> by <author>Mary Russell Mitford</author>
-					<!--err: I'm not sure how to note that this edition of Foscari was published in Mitford's 1854 Dramatic Works. Do we need another title tag for this? -->
-					<pubPlace>London</pubPlace>
-					<publisher>Hurst and Blackett, Publishers, Successors to Henry Colburn,</publisher>
-					<placeName>13, Great Marlborough Street.</placeName>
-					<date>1854</date>.
+					<title level="a">Foscari: A Tragedy. In Five Acts</title> by <author>Mary Russell Mitford</author>
+					<!--err: I'm not sure how to note that this edition of Foscari was published in Mitford's 1854 Dramatic Works. Do we need another title tag for this? 
+		ebb: Yes: We can do that in a <title level="m"> to indicate it's a main title for a monograph or multivolume work. I've updated it here	
+					-->
+					<title level="m">The Dramatic Works of Mary Russell Mitford</title>
+					<author ref="#MRM"/>
+					<pubPlace>
+						<placeName ref="#London_city">London</placeName>
+					</pubPlace>
+					<publisher>
+						<orgName ref="#Hurst_Blackett_pub">Hurst and Blackett, Publishers, Successors to Henry Colburn</orgName>
+					</publisher>
+					<pubPlace>13, Great Marlborough Street</pubPlace>
+					<date when="1854">1854</date>
 				</bibl>
 				
 			</sourceDesc>
@@ -135,7 +137,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 		<revisionDesc>
 			<!-- Describe latest changes at the top in <change/> elements.  -->
 			<change when="2021-08-27" who="#ebb">Updated schema line to new Mitford ODD-schema. Revised backlists to change @type to @sortkey and update values. 
-				Changed straight apostrophes to curly apostrophes in element contents. Added this change log to teiHeader.</change>
+				Changed straight apostrophes to curly apostrophes in element contents. Added this change log to teiHeader, and updatd teiHeader to new 2021 version.</change>
 			<!-- Describe earlier changes in <change/> elements below this point. -->
 		</revisionDesc>
 	</teiHeader>
