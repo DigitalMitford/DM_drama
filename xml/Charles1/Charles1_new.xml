@@ -11,8 +11,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
          <titleStmt>
             <title>Charles I, an Historical Tragedy in Five Acts</title>
             <author ref="#MRM">Mary Russell Mitford [London: John Duncombe, 1825]</author>
-
-            <editor ref="#rnes">Rebecca Nesvet</editor>
+            <editor>Digital Mitford Drama Team</editor>
+           <!-- <editor ref="#rnes">Rebecca Nesvet</editor>-->
 
 
             <sponsor>
@@ -24,7 +24,8 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
             <respStmt>
                <resp>Transcription, recording of variants, and TEI coding by</resp>
-               <persName ref="#rnes">Rebecca Nesvet</persName>
+               <!--<persName ref="#rnes">Rebecca Nesvet</persName>-->
+               <orgName>the Digital Mitford Drama Team</orgName>
 
             </respStmt>
             
