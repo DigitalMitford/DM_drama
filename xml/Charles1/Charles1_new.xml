@@ -13,8 +13,6 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
             <author ref="#MRM">Mary Russell Mitford [London: John Duncombe, 1825]</author>
             <editor>Digital Mitford Drama Team</editor>
            <!-- <editor ref="#rnes">Rebecca Nesvet</editor>-->
-
-
             <sponsor>
                <orgName>Mary Russell Mitford Society: Digital Mitford
                Project</orgName>
@@ -132,6 +130,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
       </encodingDesc>
       <revisionDesc>
          <listChange>
+            <change when="2024-02-29" who="#ebb">On outputting separate MS and Pub XML files from this source, I found an unwrapped line and added a missing &lt;l&gt; element. We may need to see if there are others. Need to re-generate xml:ids.</change>
             <change from="2018-05-26" to="2018-05-28" who="#ebb"> Overhauled with XSLT the app tagging to make sure all apps contain no more than two rdg elements and all are properly formed. Altered renderings of pb elements to remove these from the critical apparatus (consistent with Eric Hood's encoding in Rienzi). Added note elements, resolved issues marked in XML comments, made several corrections against ms and published copy. Moved comment tags from the TEI header marking our revisions into this change log.</change>
             <change when="2018-03-31" who="#rnes">Entered corrections from hypothes.is annotations.</change>
             <change when="2018-03-02" who="#ebb">Amended the app markup so it's consistent throughout the play and can be transformed to group all variants in the same app element.</change>
@@ -8308,28 +8307,12 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
                         <rdg wit="#msC1">&amp;</rdg>
                         <rdg wit="#pubC1">and</rdg>
                      </app> I forgot</l>
-                  <app>
+                  <l><app>
                      <rdg wit="#pubC1">Thy glory &amp;and Tt hy cause, the suffering saints .</rdg>
                      <rdg wit="#msC1">Thy glory &amp;and Tt hy cause, the suffering saints .
-                        
-                           
-                          
-                        
-                           
-                              
-                           
-                        
                   
-                           
-                              
-                           
-                        
-                  
-                           
-                              
-                           
                         </rdg>
-                  </app>
+                  </app></l>
                   <!--RN June 29, 2014: these 4 identical lines of code indicate four consecutive lines of squiggle del, followed by an entire struck page. The remainder of the page - most of it - is blank. Should I indicate that somehow? ERR says: These look to be extraneous empty lines that can be deleted. Please advise?--><!--LMW I would write a <note> describing it, I think. ie, <note resp="#rnes">A struck page follows.</note>--><!--2018-05-28 ebb: I think this is okay, but I've wrapped just one app and rdg element around the deleted lines, consistent with current TEI P5. -->
                   <app>
                      <rdg wit="#pubC1"/>
